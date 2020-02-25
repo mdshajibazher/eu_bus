@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
+use App\Area;
 use App\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Department;
+use Illuminate\Support\Str;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -51,10 +54,18 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
+            'phone' => ['required', 'numeric'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'department' => ['required', 'string', 'max:255'],
+            'address' => ['required', 'string', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'area' => ['required', 'integer']
+            
         ]);
     }
+
+
+
 
     /**
      * Create a new user instance after a valid registration.
@@ -66,8 +77,22 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
+            'studentid' => date('Y').rand(10,100),
+            'phone' => $data['phone'],
             'email' => $data['email'],
+            'department' => $data['department'],
+            'address' => $data['address'],
+            'area' => $data['area'],
             'password' => Hash::make($data['password']),
         ]);
+
     }
+    protected function showRegistrationForm(){
+        $area= Area::all();
+        $department = Department::all();
+        return view('auth.register', compact('area', 'department'));
+    }
+    
+    
+    
 }

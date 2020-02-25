@@ -19,10 +19,10 @@ class CreateUsersTable extends Migration
             $table->string('studentid');
             $table->string('email')->unique();
             $table->string('phone')->unique();
-            $table->integer('department');
+            $table->unsignedBigInteger('department');
             $table->text('address');
             $table->unsignedBigInteger('area');
-            $table->unsignedBigInteger('bus_route');
+            $table->unsignedBigInteger('bus_route')->nullable();
             $table->string('image')->default('default.png');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
@@ -30,6 +30,7 @@ class CreateUsersTable extends Migration
             $table->timestamps();
             $table->foreign('area')->references('id')->on('area');
             $table->foreign('bus_route')->references('id')->on('route');
+            $table->foreign('department')->references('id')->on('department');
         });
     }
 

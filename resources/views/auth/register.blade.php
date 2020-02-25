@@ -15,7 +15,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" autocomplete="name" autofocus>
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -28,7 +28,7 @@
                             <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
 
                             <div class="col-md-6">
-                                <input id="phone" type="number" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone" autofocus>
+                                <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}"  autocomplete="phone" autofocus>
 
                                 @error('phone')
                                     <span class="invalid-feedback" role="alert">
@@ -42,7 +42,7 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"  autocomplete="email">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -54,13 +54,14 @@
 
 
                         <div class="form-group row">
-                            <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Department') }}</label>
+                            <label for="department" class="col-md-4 col-form-label text-md-right">{{ __('Department') }}</label>
 
                             <div class="col-md-6">
-                                <select id="department"  class="form-control @error('department') is-invalid @enderror" name="department" value="{{ old('department') }}" required autocomplete="department" autofocus>
-                                    <option value="">Cse</option>
-                                    <option value="1">Cse</option>
-                                    <option value="">Cse</option>
+                                <select id="department"  class="form-control @error('department') is-invalid @enderror" name="department" value="{{ old('department') }}"  autocomplete="department" autofocus>
+                                    <option value="">-Select Department</option>
+                                    @foreach ($department as $item)
+                                         <option value="{{$item->id}}" {{old('department') == $item->id ? 'selected' : '' }}>{{$item->name}}</option>
+                                    @endforeach
                                 
                                 </select>
                                 @error('department')
@@ -78,8 +79,8 @@
                             <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
 
                             <div class="col-md-6">
-                                <textarea rows="8" id="address"  class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address" autofocus></textarea>
-                                @error('department')
+                                <textarea rows="8" id="address"  class="form-control @error('address') is-invalid @enderror" name="address"   autocomplete="address" autofocus>{{ old('address') }}</textarea>
+                                @error('address')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -94,10 +95,11 @@
                             <label for="area" class="col-md-4 col-form-label text-md-right">{{ __('Area') }}</label>
 
                             <div class="col-md-6">
-                                <select id="area"  class="form-control @error('area') is-invalid @enderror" name="area" value="{{ old('area') }}" required autocomplete="area" autofocus>
-                                    <option value="1">Mohammadpur</option>
-                                    <option value="1">Kakoli</option>
-                                    <option value="">Cse</option>
+                                <select id="area"  class="form-control @error('area') is-invalid @enderror" name="area" autocomplete="area" autofocus>
+                                    <option value="">-Select Area-</option>
+                                    @foreach($area as $areaitem)
+                                    <option value="{{$areaitem->id}}" {{old('area') == $areaitem->id ? 'selected' : '' }}>{{$areaitem->name}}</option>
+                                    @endforeach
                                 </select>
                                 @error('area')
                                     <span class="invalid-feedback" role="alert">
@@ -108,46 +110,11 @@
                         </div>
 
 
-                                                
-                        <div class="form-group row">
-                            <label for="bus_route" class="col-md-4 col-form-label text-md-right">{{ __('Bus Route') }}</label>
-
-                            <div class="col-md-6">
-                                <select id="bus_route"  class="form-control @error('bus_route') is-invalid @enderror" name="bus_route" value="{{ old('bus_route') }}" required autocomplete="bus_route" autofocus>
-                                    <option value="1">One</option>
-                                    <option value="1">Two</option>
-                                    <option value="1">Three</option>
-                                </select>
-                                @error('bus_route')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="image" class="col-md-4 col-form-label text-md-right">{{ __('Image') }}</label>
-
-                            <div class="col-md-6">
-                                <input type="file" id="image"  class="form-control @error('image') is-invalid @enderror" name="image" value="{{ old('image') }}" required autocomplete="image" autofocus>
-                                @error('image')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-
-
-
-
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"  autocomplete="new-password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -161,7 +128,7 @@
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation"  autocomplete="new-password">
                             </div>
                         </div>
 
