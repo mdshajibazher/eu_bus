@@ -1,0 +1,73 @@
+.login-logo, .register-logo {
+    font-size: 2.1rem;
+    font-weight: 300;
+    margin-bottom: 0.9rem;
+    text-align: center;
+}
+.login-logo a, .register-logo a {
+    color: #34495e;
+}
+.login-page, .register-page {
+    align-items: center;
+    background: #ecf0f1;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+}
+.login-box, .register-box {
+    width: 360px;
+}
+@media (max-width: null) {
+    .login-box, .register-box {
+        margin-top: 20px;
+        width: 90%;
+   }
+}
+.login-card-body, .register-card-body {
+    background: #fff;
+    border-top: 0;
+    color: #666;
+    padding: 20px;
+}
+.login-card-body .input-group .form-control, .register-card-body .input-group .form-control {
+    border-right: 0;
+}
+.login-card-body .input-group .form-control:focus, .register-card-body .input-group .form-control:focus {
+    box-shadow: none;
+}
+.login-card-body .input-group .form-control:focus ~ .input-group-append .input-group-text, .register-card-body .input-group .form-control:focus ~ .input-group-append .input-group-text {
+    border-color: #3498db;
+}
+.login-card-body .input-group .form-control.is-valid:focus, .register-card-body .input-group .form-control.is-valid:focus {
+    box-shadow: none;
+}
+.login-card-body .input-group .form-control.is-valid ~ .input-group-append .input-group-text, .register-card-body .input-group .form-control.is-valid ~ .input-group-append .input-group-text {
+    border-color: #4cd137;
+}
+.login-card-body .input-group .form-control.is-invalid:focus, .register-card-body .input-group .form-control.is-invalid:focus {
+    box-shadow: none;
+}
+.login-card-body .input-group .form-control.is-invalid ~ .input-group-append .input-group-text, .register-card-body .input-group .form-control.is-invalid ~ .input-group-append .input-group-text {
+    border-color: #e74c3c;
+}
+.login-card-body .input-group .input-group-text, .register-card-body .input-group .input-group-text {
+    background-color: transparent;
+    border-bottom-right-radius: 5px;
+    border-left: 0;
+    border-top-right-radius: 5px;
+    color: #777;
+}
+.login-box-msg, .register-box-msg {
+    margin: 0;
+    padding: 0 20px 20px;
+    text-align: center;
+}
+.social-auth-links {
+    margin: 10px 0;
+}
+.login-error{
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 80%;
+  color: #e3342f;
+}

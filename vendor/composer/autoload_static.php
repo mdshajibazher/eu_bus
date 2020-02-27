@@ -25,6 +25,7 @@ class ComposerStaticInit33dd2cb154b8ada17f573f8aee115b03
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         'b6ec61354e97f32c0ae683041c78392a' => __DIR__ . '/..' . '/scrivo/highlight.php/HighlightUtilities/functions.php',
+        'caf23243e9cb3afd48d0414815ebf07e' => __DIR__ . '/..' . '/brian2694/laravel-toastr/src/helper.php',
         'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
     );
 
@@ -144,6 +145,10 @@ class ComposerStaticInit33dd2cb154b8ada17f573f8aee115b03
         array (
             'Cron\\' => 5,
             'Carbon\\' => 7,
+        ),
+        'B' => 
+        array (
+            'Brian2694\\Toastr\\' => 17,
         ),
         'A' => 
         array (
@@ -402,6 +407,10 @@ class ComposerStaticInit33dd2cb154b8ada17f573f8aee115b03
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
         ),
+        'Brian2694\\Toastr\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/brian2694/laravel-toastr/src',
+        ),
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
@@ -433,6 +442,7 @@ class ComposerStaticInit33dd2cb154b8ada17f573f8aee115b03
         'App\\Admin' => __DIR__ . '/../..' . '/app/Admin.php',
         'App\\Area' => __DIR__ . '/../..' . '/app/Area.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
+        'App\\Department' => __DIR__ . '/../..' . '/app/Department.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Auth\\AdminLoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/AdminLoginController.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
@@ -451,12 +461,16 @@ class ComposerStaticInit33dd2cb154b8ada17f573f8aee115b03
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Http\\Requests\\adminLoginRequest' => __DIR__ . '/../..' . '/app/Http/Requests/adminLoginRequest.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
+        'Brian2694\\Toastr\\Facades\\Toastr' => __DIR__ . '/..' . '/brian2694/laravel-toastr/src/Facades/Toastr.php',
+        'Brian2694\\Toastr\\Toastr' => __DIR__ . '/..' . '/brian2694/laravel-toastr/src/Toastr.php',
+        'Brian2694\\Toastr\\ToastrServiceProvider' => __DIR__ . '/..' . '/brian2694/laravel-toastr/src/ToastrServiceProvider.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonImmutable' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonImmutable.php',
         'Carbon\\CarbonInterface' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterface.php',
