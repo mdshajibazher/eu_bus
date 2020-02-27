@@ -21,7 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('admin/login', 'Auth\AdminLoginController@adminLogin')->name('admin.login');
 Route::post('admin/login', 'Auth\AdminLoginController@adminLoginSubmit')->name('admin.login');
 
-Route::get('admin/dashboard', 'AdminController@dashboard')->name('admin.dashboard');
+Route::get('admin/dashboard', 'adminController@dashboard')->name('admin.dashboard');
 
 Route::get('admin/logout', 'Auth\AdminLoginController@adminLogout')->name('admin.logout');
 
