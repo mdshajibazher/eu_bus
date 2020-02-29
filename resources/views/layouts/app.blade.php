@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    
+<head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
@@ -9,15 +9,15 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-
+    <!-- Scripts -->
+    <script src="{{ asset('public/js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
+    @stack('css')
     <!-- Styles -->
     <link href="{{ asset('public/css/app.css') }}" rel="stylesheet">
-    <script src="public/asset/plugins/jquery/jquery.js"></script>
 </head>
 <body>
     <div id="app">
@@ -76,6 +76,5 @@
             @yield('content')
         </main>
     </div>
-    @stack('css_js')
 </body>
 </html>

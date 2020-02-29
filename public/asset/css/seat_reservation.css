@@ -1,47 +1,8 @@
-#holder{    
-height:200px;    
-width:550px;
-background-color:#F5F5F5;
-border:1px solid #A4A4A4;
-margin-left:10px;   
+.single-seat{
+    display: inline-block;
+    margin: 10px 5px;
 }
-#place {
-position:relative;
-margin:7px;
-}
-#place a{
-font-size:0.6em;
-}
-#place li
-{
- list-style: none outside none;
- position: absolute;   
-}    
-#place li:hover
-{
-background-color:yellow;      
-} 
-#place .seat{
-background:url("image/seat/available_seat_img.gif") no-repeat scroll 0 0 transparent;
-height:33px;
-width:33px;
-display:block;   
-}
-#place .selectedSeat
-{ 
-background-image:url("image/seat/booked_seat_img.gif");          
-}
-#place .selectingSeat
-{ 
-background-image:url("image/seat/selected_seat_img.gif");        
-}
-#place .row-3, #place .row-4{
-margin-top:10px;
-}
-#seatDescription li{
-verticle-align:middle;    
-list-style: none outside none;
-padding-left:35px;
-height:35px;
-float:left;
+.btn-seat {
+    width: 42px;
+    font-weight: bold;
 }
