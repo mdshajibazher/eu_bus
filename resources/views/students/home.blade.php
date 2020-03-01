@@ -14,13 +14,22 @@
 
                 <div class="card-body">
                     <form action="" method="post">
+                    @csrf
                     <div class="row">
                         <div class="col-md-5">
                             <div class="single-seat">
-                                    
+                                    @php
+                                    $disabled_seat = array(1,2,5,6);
+                                    @endphp
+
                                     @for ($i = 1; $i <= 40; $i++)
                                     
-                                    <input type="radio" name="seat" value="{{$i}}" id="{{$i}}">
+                                    <input type="radio" name="seat" value="{{$i}}" id="{{$i}}" 
+                                    @foreach($disabled_seat as $disabled)
+                                        @if($disabled == $i)
+                                            {{"disabled"}}
+                                        @endif
+                                    @endforeach>
                                     <label class="btn btn-primary btn-sm btn-seat" for="{{$i}}">{{$i}}</label>
                                     @endfor
                                     

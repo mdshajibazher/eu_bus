@@ -25,4 +25,8 @@ class HomeController extends Controller
     {
         return view('students.home');
     }
+    public function insert(Request $request)
+    {
+        return $request;
+    }
 }

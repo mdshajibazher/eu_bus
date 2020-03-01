@@ -10,3 +10,12 @@
     background: #f1c40f;
     border: 1px solid #f1c40f;
 }
+.single-seat input:disabled +label {
+    background: #eb4d4b;
+    border: 1px solid #eb4d4b;
+    cursor: not-allowed;
+}
+.single-seat input:disabled +label:active{
+    background: #eb4d4b;
+    border: 1px solid #eb4d4b;
+}
