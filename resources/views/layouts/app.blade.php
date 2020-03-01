@@ -9,15 +9,13 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('public/js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     @stack('css')
     <!-- Styles -->
     <link href="{{ asset('public/css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('public/style.css') }}">
 </head>
 <body>
     <div id="app">
@@ -49,23 +47,19 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                            <li class="nav-item">
+                                   <a class="nav-link" href="">{{ Auth::user()->name }}</a> 
+                            </li>
+                            <li class="nav-item">
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <a class="nav-link" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
+                                </a>
+                            </form>
+                        </li>
                         @endguest
                     </ul>
                 </div>
@@ -76,5 +70,9 @@
             @yield('content')
         </main>
     </div>
+    <!-- Jquery -->
+    <script src="{{asset('public/asset/plugins/jquery/jquery.js')}}"></script>
+    <script src="{{asset('public/asset/plugins/bootstrap/bootstrap.min.js')}}"></script>
+     @stack('customjs')
 </body>
 </html>
