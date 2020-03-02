@@ -29,7 +29,7 @@ class AdminLoginController extends Controller
             return redirect(route('admin.dashboard'));
         }else{
             Session()->flash('error', 'Invalid User/Password Conbination');
-            return redirect()->back()->withInput($request->only('email', 'remember'));
+            return redirect()->back()->withInput($request->only('adminname', 'remember'));
         }
         
     }

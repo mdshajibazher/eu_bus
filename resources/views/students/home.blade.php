@@ -42,6 +42,14 @@
                                 <label for="journey_date">Journey Date</label>
                                 <input type="text" class="form-control" id="journey_date" name="journey_date"  placeholder="Enter Journey Date">
                             </div>
+                            <div class="form-group">
+                                <label for="journey_date">Bus Name: </label>
+                                <span class="badge badge-warning">Bus 1</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="journey_date">Route:</label>
+                                <span class="badge badge-warning">Route 1</span>
+                            </div>
                             <button type="submit" class="btn btn-success">Submit</button>
                         </div>
                 
