@@ -3,7 +3,7 @@
 
 @section('content')
 <!-- Multi Select -->
-<form action="{{route('admin.busroute')}}" method="POST">
+<form action="{{route('busroute.store')}}" method="POST">
 @csrf
 <div class="row clearfix">
     <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
@@ -16,6 +16,15 @@
             </div>
             <div class="body">
                 <h4>Please assign some area in Route 1</h4>
+                @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
                 
                 @php
                     $color = array('red', 'pink', 'purple', 'deep-purple', 'indigo', 'blue', 'light-blue', 'cyan', 'teal', 'green', 'lime', 'yellow', 'amber','orange', 'deep-orange', 'brown', 'grey', 'blue-grey');
@@ -25,7 +34,7 @@
                 <div class="demo-checkbox">
                     <table class="table">
                     @foreach ($area as $item)
-                    <input type="checkbox" id="{{$item->id}}" class="filled-in chk-col-{{$color[rand(1,17)]}}" name="route[]" />
+                    <input type="checkbox" id="{{$item->id}}" class="filled-in chk-col-{{$color[rand(1,17)]}}" value="{{$item->id}}" name="area[]" />
                     <label for="{{$item->id}}">{{$item->name}}</label>
                     @endforeach
                 </table>

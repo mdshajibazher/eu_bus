@@ -18,7 +18,8 @@
     
     <!-- Waves Effect Css -->
     <link href="{{asset('public/asset/plugins/node-waves/waves.css')}}" rel="stylesheet" />
-
+    <!-- Tostr Css -->
+    <link href="{{asset('public/asset/css/toastr.min.css')}}" rel="stylesheet" />
     <!-- Animation Css -->
     <link href="{{asset('public/asset/plugins/animate-css/animate.css')}}" rel="stylesheet" />
     <!-- Bootstrap Core Css -->
@@ -84,6 +85,7 @@
       <!-- Bootstrap Js  -->
       <script src="{{asset('public/asset/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
      <!-- Tostr Js -->
+     <script src="{{asset('public/asset/js/toastr.min.js')}}"></script>
      {!! Toastr::message() !!}
 
      <!-- Select Plugin Js -->
@@ -97,7 +99,7 @@
  
  
  
- 
+    
      @stack('js')
  
      <!-- Custom Js -->

@@ -45,7 +45,7 @@
                         <ul class="ml-menu">
 
                             <li>
-                                <a href="{{route('admin.busroute')}}">Set Bus Route</a>
+                                <a href="{{route('busroute.index')}}">Set Bus Route</a>
                             </li>
 
                             
