@@ -24,5 +24,8 @@ Route::post('admin/login', 'Auth\AdminLoginController@adminLoginSubmit')->name('
 
 Route::get('admin/dashboard', 'adminController@dashboard')->name('admin.dashboard');
 
+Route::get('admin/busroute', 'adminController@busroute')->name('admin.busroute');
+Route::post('admin/busroute', 'adminController@busrouteCreate')->name('admin.busroute.create');
+
 Route::get('admin/logout', 'Auth\AdminLoginController@adminLogout')->name('admin.logout');
 

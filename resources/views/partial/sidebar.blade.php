@@ -30,13 +30,29 @@
                 <li class="header">MAIN NAVIGATION</li>
 
 
-                <li class="">
-                    <a href="">
+                <li class="{{Request::is('admin/dashboard') ? 'active' : '' }}">
+                    <a href="{{route('admin.dashboard')}}">
                             <i class="material-icons">home</i>
                             <span>Dashboard</span>
                         </a>
                     </li>
+                    <li class="{{Request::is('admin/busroute') ? 'active' : '' }}">
+                    <a class="menu-toggle" href="javascript:void(0);">
+                        {{-- {{route('admin.busroute')}} --}}
+                        <i class="material-icons">swap_calls</i>
+                                <span>Bus Route Assign</span>
+                        </a>
+                        <ul class="ml-menu">
+
+                            <li>
+                                <a href="{{route('admin.busroute')}}">Set Bus Route</a>
+                            </li>
+
+                            
+                        </ul>
+                    </li>
                     <li class="header">system</li>
+
                     <li>
                 
                      <a class="dropdown-item" href="{{ route('admin.logout') }}"><i class="material-icons">input</i>

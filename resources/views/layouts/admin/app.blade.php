@@ -15,15 +15,14 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
 
-    <!-- Bootstrap Core Css -->
-<link href="{{asset('public/asset/plugins/bootstrap/css/bootstrap.css')}}" rel="stylesheet">
-
+    
     <!-- Waves Effect Css -->
     <link href="{{asset('public/asset/plugins/node-waves/waves.css')}}" rel="stylesheet" />
 
     <!-- Animation Css -->
     <link href="{{asset('public/asset/plugins/animate-css/animate.css')}}" rel="stylesheet" />
-
+    <!-- Bootstrap Core Css -->
+    <link href="{{asset('public/asset/plugins/bootstrap/css/bootstrap.css')}}" rel="stylesheet">
     <!-- Morris Chart Css-->
     <link href="{{asset('public/asset/plugins/morrisjs/morris.css')}}" rel="stylesheet" />
      <!-- Tostr Css-->
@@ -37,6 +36,7 @@
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="{{asset('public/asset/css/themes/all-themes.css')}}" rel="stylesheet" />
 
+    <link href="{{asset('public/style.css')}}" rel="stylesheet">
 </head>
 <body class="theme-blue">
 
@@ -81,6 +81,8 @@
     </section>
      <!-- Jquery Core Js -->
      <script src="{{asset('public/asset/plugins/jquery/jquery.min.js')}}"></script>
+      <!-- Bootstrap Js  -->
+      <script src="{{asset('public/asset/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
      <!-- Tostr Js -->
      {!! Toastr::message() !!}
 

@@ -17,7 +17,10 @@ class CreateAreaTable extends Migration
             $table->bigIncrements('id');
             $table->string('slug');
             $table->string('name');
+            $table->unsignedBigInteger('route')->nullable();
             $table->timestamps();
+            $table->foreign('route')->references('id')->on('route');
+            
         });
     }
 

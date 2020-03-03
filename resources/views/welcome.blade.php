@@ -13,11 +13,25 @@
         <style>
             html, body {
                 background-color: #30336b;
+                background-image: url('public/image/bus.jpg');
+                background-size: cover;
                 color: #fff;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
                 height: 100vh;
                 margin: 0;
+            }
+            body::before{
+                content: '';
+                display: block;
+                background: rgba(0,0,0,.5);
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
             }
 
             .full-height {
@@ -85,7 +99,7 @@
                     EU BUS MANAGEMENT
                 </div>
 
-                
+            {{-- <img src="{{asset('public/image/bus.jpg')}}" alt="eu bus"/> --}}
             </div>
         </div>
     </body>

@@ -1,3 +1,6 @@
 body{
 	background: #ecf0f1;
 }
+.demo-checkbox label, .demo-radio-button label{
+	min-width: 33%;
+}

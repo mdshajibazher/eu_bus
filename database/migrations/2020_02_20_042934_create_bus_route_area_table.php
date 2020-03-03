@@ -15,11 +15,13 @@ class CreateBusRouteAreaTable extends Migration
     {
         Schema::create('bus_route_area', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('route_id');
-            $table->unsignedBigInteger('area_id');
+            $table->unsignedBigInteger('route');
+            $table->unsignedBigInteger('area');
+            $table->unsignedBigInteger('bus');
             $table->timestamps();
-            $table->foreign('route_id')->references('id')->on('route');
-            $table->foreign('area_id')->references('id')->on('area');
+            $table->foreign('route')->references('id')->on('route');
+            $table->foreign('area')->references('id')->on('area');
+            $table->foreign('bus')->references('id')->on('buses');
         });
     }
 

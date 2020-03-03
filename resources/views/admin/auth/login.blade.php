@@ -33,7 +33,9 @@
       <form action="" method="post">
         @csrf
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="username" name="adminname" value="{{old('adminname')}}"> 
+          <input type="text" class="form-control" placeholder="username" name="adminname" value="@if(old('adminname') == null){{'admin'}}@else{{old('adminname')}}
+@endif"
+            > 
           <div class="input-group-append">
             <div class="input-group-text">
                 <i class="fa fa-user"></i>
@@ -46,7 +48,7 @@
         @enderror
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password" name="password" value="">
+          <input type="password" class="form-control" placeholder="Password" name="password" value="12345678">
           <div class="input-group-append">
             <div class="input-group-text">
               <i class="fa fa-lock"></i>
