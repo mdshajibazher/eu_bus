@@ -67,6 +67,7 @@ class BusRouteController extends Controller
      */
     public function show($id)
     {
+    
         //
     }
 
@@ -78,7 +79,11 @@ class BusRouteController extends Controller
      */
     public function edit($id)
     {
-        //
+        $RouteWiseAreaInformation = DB::table('bus_route_area')->where('route', $id)->get();
+        $route= Route::all();
+        $area = Area::all();
+        $bus = Bus::all();
+        return view('admin.route.editroute',compact('RouteWiseAreaInformation','area', 'route','bus'));
     }
 
     /**

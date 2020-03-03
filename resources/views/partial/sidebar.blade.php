@@ -43,10 +43,15 @@
                                 <span>Bus Route Assign</span>
                         </a>
                         <ul class="ml-menu">
-
+                            @foreach ($eu_bus_route as $routeItem)
                             <li>
-                                <a href="{{route('busroute.index')}}">Set Bus Route</a>
+                                <a href="{{route('busroute.edit',$routeItem->id)}}">
+                                    <i class="material-icons">
+                                    directions_bus
+                                    </i> <span>{{$routeItem->name}}</span></a>
                             </li>
+                            @endforeach
+                            
 
                             
                         </ul>

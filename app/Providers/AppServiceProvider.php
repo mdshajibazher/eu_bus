@@ -26,6 +26,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+       
+        View::composer('*', function ($view) {
+            $eu_bus_route = Route::all();
+            $view->with('eu_bus_route', $eu_bus_route);
+        });
         Schema::defaultStringLength(191);
     }
 }
