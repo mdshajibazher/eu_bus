@@ -17,18 +17,27 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::post('/home', 'HomeController@insert')->name('home.insert');
+Route::group(['middleware' => ['auth']], function(){
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::post('/home', 'HomeController@insert')->name('home.insert');
+
+});
+
+
+
 Route::get('admin/login', 'Auth\AdminLoginController@adminLogin')->name('admin.login');
 Route::post('admin/login', 'Auth\AdminLoginController@adminLoginSubmit')->name('admin.login');
 
-Route::get('admin/dashboard', 'adminController@dashboard')->name('admin.dashboard');
+Route::group(['prefix'=> 'admin','middleware' => ['auth:admin']], function(){
+    Route::get('dashboard', 'adminController@dashboard')->name('admin.dashboard');
+    Route::get('busroute/{busroute}/edit', 'BusRouteController@edit')->name('busroute.edit');
+    Route::put('busroute/{busroute}', 'BusRouteController@update')->name('busroute.update');
+    Route::get('bus/{routeid}/edit', 'BusController@edit')->name('bus.edit');
+    Route::put('bus/{routeid}', 'BusController@update')->name('bus.update');
+    Route::get('logout', 'Auth\AdminLoginController@adminLogout')->name('admin.logout');
 
-Route::get('admin/busroute/{busroute}/edit', 'BusRouteController@edit')->name('busroute.edit');
-Route::put('admin/busroute/{busroute}', 'BusRouteController@update')->name('busroute.update');
+});
 
-Route::get('admin/bus/{routeid}/edit', 'BusController@edit')->name('bus.edit');
-Route::put('admin/bus/{routeid}', 'BusController@update')->name('bus.update');
 
-Route::get('admin/logout', 'Auth\AdminLoginController@adminLogout')->name('admin.logout');
+
 

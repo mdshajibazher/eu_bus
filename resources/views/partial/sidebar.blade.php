@@ -36,7 +36,7 @@
                             <span>Dashboard</span>
                         </a>
                     </li>
-                    <li class="{{Request::is('admin/busroute') ? 'active' : '' }}">
+                    <li class="{{Request::is('admin/busroute*') ? 'active' : '' }}">
                     <a class="menu-toggle" href="javascript:void(0);">
                         <i class="material-icons">room</i>
                                 <span>Area Assign For Route</span>
@@ -51,7 +51,7 @@
                             
                         </ul>
                     </li>
-                    <li class="{{Request::is('admin/busroute') ? 'active' : '' }}">
+                    <li class="{{Request::is('admin/bus/*') ? 'active' : '' }}">
                         <a class="menu-toggle" href="javascript:void(0);">
                             <i class="material-icons">
                                 directions_bus
@@ -62,7 +62,9 @@
                                 @foreach ($eu_bus_route as $routeItem)
                                 <li>
                                     <a href="{{route('bus.edit',$routeItem->id)}}">
-                                        <i class="material-icons">swap_calls</i> <span>{{$routeItem->name}}</span></a>
+                                        <i class="material-icons">
+                                            call_split
+                                            </i><span>{{$routeItem->name}}</span></a>
                                 </li>
                                 @endforeach
                                 
