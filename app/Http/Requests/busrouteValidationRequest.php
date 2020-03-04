@@ -25,8 +25,6 @@ class busrouteValidationRequest extends FormRequest
     {
         return [
             'area' => 'required',
-            'bus'  => 'required',
-            'route'  => 'required',
         ];
     }
 }

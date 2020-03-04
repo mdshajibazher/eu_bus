@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Bus;
+use App\User;
+use App\Route;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class adminController extends Controller
 {
@@ -11,8 +15,13 @@ class adminController extends Controller
     }
 
     public function dashboard(){
-       
-        return view('admin.dashboard');
+
+
+        $UsedArea = DB::table('bus_route_area')->select('area')->distinct()->get();       
+        $busCount = Bus::all()->count();
+        $routeCount = Route::all()->count();
+        $students = User::all()->count();
+        return view('admin.dashboard',compact('busCount','UsedArea','routeCount','students'));
     }
 
 

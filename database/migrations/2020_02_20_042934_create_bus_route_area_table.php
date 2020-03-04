@@ -17,11 +17,9 @@ class CreateBusRouteAreaTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('route');
             $table->unsignedBigInteger('area');
-            $table->unsignedBigInteger('bus');
             $table->timestamps();
             $table->foreign('route')->references('id')->on('route');
             $table->foreign('area')->references('id')->on('area');
-            $table->foreign('bus')->references('id')->on('buses');
         });
     }
 

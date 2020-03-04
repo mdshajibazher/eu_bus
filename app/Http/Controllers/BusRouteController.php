@@ -12,59 +12,7 @@ use App\Http\Requests\busrouteValidationRequest;
 
 class BusRouteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $route= Route::all();
-        $area = Area::all();
-        $bus = Bus::all();
-        return view('admin.route.busroute',compact('route','area', 'bus'));
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(busrouteValidationRequest $request)
-    {
-
-        $busroute = $request['route'];
-        $bus = $request['bus'];
-        $area_array = $request['area'];
-
-        foreach($area_array as $arrayindex => $areaid){
-            DB::table('bus_route_area')->insert(
-                ['route' => $busroute, 'area' => $areaid, 'bus'=> $bus]
-            );
-        }
-        Toastr::success('Route Route Assigned Successfully', 'success');
-        return redirect(route('busroute.index'));
-
-       
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
     
@@ -79,11 +27,11 @@ class BusRouteController extends Controller
      */
     public function edit($id)
     {
+        $routeId = $id;
         $RouteWiseAreaInformation = DB::table('bus_route_area')->where('route', $id)->get();
         $route= Route::all();
         $area = Area::all();
-        $bus = Bus::all();
-        return view('admin.route.editroute',compact('RouteWiseAreaInformation','area', 'route','bus'));
+        return view('admin.route.editarea',compact('RouteWiseAreaInformation','area', 'route','routeId'));
     }
 
     /**
@@ -93,19 +41,22 @@ class BusRouteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(busrouteValidationRequest $request, $id)
     {
-        //
+
+        if(DB::table('bus_route_area')->where('route', $id)->exists()){
+            DB::table('bus_route_area')->where('route', '=', $id)->delete();
+        }
+        $requested_route = $request['route'];
+        $requested_area = $request['area'];
+        foreach($requested_area as $arrayindex => $areaid){
+            DB::table('bus_route_area')->insert(
+                ['route' => $id, 'area' => $areaid]
+            );
+        }
+        Toastr::success('Route Updated Successfully', 'success');
+        return redirect()->back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+
 }

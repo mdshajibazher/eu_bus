@@ -38,24 +38,36 @@
                     </li>
                     <li class="{{Request::is('admin/busroute') ? 'active' : '' }}">
                     <a class="menu-toggle" href="javascript:void(0);">
-                        {{-- {{route('admin.busroute')}} --}}
-                        <i class="material-icons">swap_calls</i>
-                                <span>Bus Route Assign</span>
+                        <i class="material-icons">room</i>
+                                <span>Area Assign For Route</span>
                         </a>
                         <ul class="ml-menu">
                             @foreach ($eu_bus_route as $routeItem)
                             <li>
                                 <a href="{{route('busroute.edit',$routeItem->id)}}">
-                                    <i class="material-icons">
-                                    directions_bus
-                                    </i> <span>{{$routeItem->name}}</span></a>
+                                    <i class="material-icons">swap_calls</i> <span>{{$routeItem->name}}</span></a>
                             </li>
                             @endforeach
                             
-
-                            
                         </ul>
                     </li>
+                    <li class="{{Request::is('admin/busroute') ? 'active' : '' }}">
+                        <a class="menu-toggle" href="javascript:void(0);">
+                            <i class="material-icons">
+                                directions_bus
+                                </i>
+                                    <span>Bus Assign For Route</span>
+                            </a>
+                            <ul class="ml-menu">
+                                @foreach ($eu_bus_route as $routeItem)
+                                <li>
+                                    <a href="{{route('bus.edit',$routeItem->id)}}">
+                                        <i class="material-icons">swap_calls</i> <span>{{$routeItem->name}}</span></a>
+                                </li>
+                                @endforeach
+                                
+                            </ul>
+                        </li>
                     <li class="header">system</li>
 
                     <li>
@@ -75,7 +87,7 @@
         <!-- Footer -->
         <div class="legal">
             <div class="copyright">
-                &copy; 2016 - 2017 <a href="javascript:void(0);">AdminBSB - Material Design</a>.
+                &copy; {{date('Y')}} <a href="javascript:void(0);">EU BUS MANAGEMENT</a>.
             </div>
             <div class="version">
                 <b>Version: </b> 1.0.5

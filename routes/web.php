@@ -24,7 +24,11 @@ Route::post('admin/login', 'Auth\AdminLoginController@adminLoginSubmit')->name('
 
 Route::get('admin/dashboard', 'adminController@dashboard')->name('admin.dashboard');
 
-Route::resource('admin/busroute', 'BusRouteController');
+Route::get('admin/busroute/{busroute}/edit', 'BusRouteController@edit')->name('busroute.edit');
+Route::put('admin/busroute/{busroute}', 'BusRouteController@update')->name('busroute.update');
+
+Route::get('admin/bus/{routeid}/edit', 'BusController@edit')->name('bus.edit');
+Route::put('admin/bus/{routeid}', 'BusController@update')->name('bus.update');
 
 Route::get('admin/logout', 'Auth\AdminLoginController@adminLogout')->name('admin.logout');
 
