@@ -1,10 +1,12 @@
 .single-seat{
     display: inline-block;
     margin: 10px 5px;
+    padding: 0 40px;
 }
 .btn-seat {
-    width: 42px;
+    width: 40px;
     font-weight: bold;
+    margin: 9px;
 }
 .single-seat input:checked +label {
     background: #f1c40f;

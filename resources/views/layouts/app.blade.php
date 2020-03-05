@@ -13,6 +13,8 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     @stack('css')
+    <!-- Select 2 css -->
+    <link href="{{ asset('public/asset/css/select2.min.css') }}" rel="stylesheet">
     <!-- Styles -->
     <link href="{{ asset('public/css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('public/style.css') }}">
@@ -72,7 +74,10 @@
     </div>
     <!-- Jquery -->
     <script src="{{asset('public/asset/plugins/jquery/jquery.js')}}"></script>
-    <script src="{{asset('public/asset/plugins/bootstrap/bootstrap.min.js')}}"></script>
+    <!-- Bootstrap js-->
+    <script src="{{asset('public/asset/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+    <!--Select 2 -->
+    <script src="{{asset('public/asset/js/select2.min.js')}}"></script>
      @stack('customjs')
 </body>
 </html>

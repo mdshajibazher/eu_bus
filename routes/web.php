@@ -20,6 +20,8 @@ Auth::routes();
 Route::group(['middleware' => ['auth']], function(){
     Route::get('/home', 'HomeController@index')->name('home');
     Route::post('/home', 'HomeController@insert')->name('home.insert');
+    Route::get('home/seatreserve/{bus}','HomeController@seatedit')->name('home.seatreserve');
+    Route::post('home/seatreserve/{bus}','HomeController@seatupdate')->name('home.seatupdate');
 
 });
 
