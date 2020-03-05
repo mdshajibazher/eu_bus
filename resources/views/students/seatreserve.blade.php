@@ -107,16 +107,10 @@ $(document).ready(function() {
 $('[data-toggle="tooltip"]').tooltip();
 // Select Box
 
-$("#bus option").click(function(){
-    $('#bus option').each(function() {
-    if($(this).is(':selected')){
-        var id = $('#bus option').filter(':selected').val();
-        window.location= id;
-    }
+$('#bus').change(function(){ 
+    var id = $(this).val();
+    window.location= id;
 });
-});
-
-
 
 });
 

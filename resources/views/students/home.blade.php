@@ -128,18 +128,12 @@ $(document).ready(function() {
 // $('#bus').select2();
 // Tooltip
 $('[data-toggle="tooltip"]').tooltip();
-// Select Box
+// Rdirect To bus reservation page
 
-$("#bus option").click(function(){
-    $('#bus option').each(function() {
-    if($(this).is(':selected')){
-        var id = $('#bus option').filter(':selected').val();
-        window.location= "home/seatreserve/"+id;
-    }
+$('#bus').change(function(){ 
+    var id = $(this).val();
+    window.location= "home/seatreserve/"+id;
 });
-});
-
-
 
 });
 </script>
