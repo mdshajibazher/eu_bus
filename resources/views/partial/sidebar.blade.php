@@ -43,7 +43,7 @@
                         </a>
                         <ul class="ml-menu">
                             @foreach ($eu_bus_route as $routeItem)
-                            <li>
+                            <li class="{{Request::is('admin/busroute/'.$routeItem->id.'/edit') ? 'active' : '' }}">
                                 <a href="{{route('busroute.edit',$routeItem->id)}}">
                                     <i class="material-icons">swap_calls</i> <span>{{$routeItem->name}}</span></a>
                             </li>
@@ -60,7 +60,7 @@
                             </a>
                             <ul class="ml-menu">
                                 @foreach ($eu_bus_route as $routeItem)
-                                <li>
+                                <li class="{{Request::is('admin/bus/'.$routeItem->id.'/edit') ? 'active' : '' }}">
                                     <a href="{{route('bus.edit',$routeItem->id)}}">
                                         <i class="material-icons">
                                             call_split
