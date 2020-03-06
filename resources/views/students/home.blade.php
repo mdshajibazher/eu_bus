@@ -17,7 +17,19 @@
                   
                         <div class="single-seat">
                         <div class="form-group">
-                            <label for="bus">Select Bus</label>
+                            <label for="date">Date</label>
+                            <input type="text" class="form-control" value="{{Session::get('journetDate')}}" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label class="checkcontainer">Route {{Session::get('route')}}
+                                <input type="radio"  value="{{Session::get('route')}}" checked >
+                                <span class="radiobtn"></span>
+                            </label>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="bus"> <span class="badge badge-danger">Please Select Bus For Route {{Session::get('route')}}</span></label><br>
                             <select class="form-control" id="bus">
                             <option value="">--select a bus--</option>
                                 @foreach ($RouteSpecificbus as $item)
@@ -26,10 +38,15 @@
                                 @endforeach
                               </select>
                         </div>
-                    <img class="img-thumbnail mb-5" src="{{asset('public/image/bus_icon.png')}}" alt="">
-                        <span class="badge badge-warning">
-                            Please Select a bus using the top select input
-                        </span>
+                        <p>Select Seat: </p>
+                        <div class="seat-container disable-wrapper">
+                            
+                            @for($i=1;$i<=40;$i++)
+                            <label class="btn btn-primary btn-sm btn-seat">{{$i}}</label>
+                            @endfor
+                        </div>
+                       
+                        
                     </div>
                 </div>
             </div>
@@ -76,7 +93,7 @@
                                     @if(count($availableRouteinf) >0)
                                     @foreach ($availableRouteinf as $routeitem)
                                     
-                                    <label class="checkcontainer" data-toggle="tooltip" data-placement="top" title="Tooltip on top">{{$routeitem->name}}
+                                    <label class="checkcontainer">{{$routeitem->name}}
                                         <input type="radio"  name="route" value="{{$routeitem->route}}">
                                         <span class="radiobtn"></span>
                                     </label>

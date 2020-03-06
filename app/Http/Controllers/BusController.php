@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Bus;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Brian2694\Toastr\Facades\Toastr;
 use App\Http\Requests\busUpdateRequest;
 
@@ -75,10 +76,13 @@ class BusController extends Controller
     public function update(busUpdateRequest $request, $id)
     {
         
-        Bus::findOrFail($id)->update(['route' => NULL]);
+        if(DB::table('buses')->where('route', $id)){
+            DB::table('buses')->where('route', $id)->update(['route' => NULL]);
+        }
+       
         $busid = $request['bus'];
         foreach($busid as $requested_id){
-            $bus= Bus::where('id', $requested_id)->update(['route' => $id]);
+            Bus::where('id', $requested_id)->update(['route' => $id]);
         }
         Toastr::success('Bus Updated Successfully', 'success');
         return redirect()->back();

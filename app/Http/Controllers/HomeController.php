@@ -50,9 +50,10 @@ class HomeController extends Controller
     public function seatedit($id)
     {
         $busid = $id;
+        $busName = DB::table('buses')->select('bus_name')->where('id', $busid)->first();
         $RouteSpecificbus  = Bus::all()->where('route', Session::get('route'));
         $seatInfo = SeatReservation::all()->where('bus',$id)->where('journey_date',Session::get('journetDate'));
-        return view('students.seatreserve',compact('RouteSpecificbus', 'seatInfo', 'busid'));
+        return view('students.seatreserve',compact('RouteSpecificbus', 'seatInfo', 'busid','busName'));
     }
     public function seatupdate(SeatReserveRequest $request, $id)
     {

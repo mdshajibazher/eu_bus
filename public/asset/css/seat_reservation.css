@@ -1,16 +1,19 @@
 .single-seat{
     display: inline-block;
     margin: 10px 5px;
-    padding: 0 40px;
 }
 .btn-seat {
     width: 40px;
     font-weight: bold;
     margin: 9px;
 }
+.single-seat label{
+    cursor: pointer;
+}
 .single-seat input:checked +label {
     background: #f1c40f;
     border: 1px solid #f1c40f;
+    
 }
 .single-seat input:disabled +label {
     background: #eb4d4b;

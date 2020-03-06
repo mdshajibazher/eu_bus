@@ -16,9 +16,6 @@
 @endif
 <div class="container">
     <div class="row justify-content-center">
-        
-        
-        
         <div class="col-md-4">
             <div class="card">
                 <div class="card-header">Dashboard</div>
@@ -34,32 +31,60 @@
                     @endif
                 <form action="{{route('home.seatupdate',$busid)}}" method="post">
                         @csrf
-                        <div class="row">
-
+ 
                             <div class="single-seat">
+                                
+                                <table class="table table-bordered">
+                          <thead>
+                            <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">Specifications</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                               <tr>
+                              <th scope="row">Student: </th>
+                              <td><span class="badge badge-warning">{{Auth::user()->name}}</span></td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Journey Date: </th>
+                              <td><span class="badge badge-success">{{Session::get('journetDate')}}</span></td>
+                            </tr>
+                            <tr>
+                              <th scope="row">For Route: </th>
+                              <td><span class="badge badge-warning">{{Session::get('route')}}</span></td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Bus: </th>
+                              <td><span class="badge badge-danger">{{$busName->bus_name}}</span></td>
+                            </tr>
+                            
+                          </tbody>
+                        </table>
+                        
                         <div class="form-group">
-                        <p>Greetings,<br> {{Auth::user()->name}}<br> Please Choose a seat and hit the reserve button </p>
-                        Joureny Date : <span class="badge badge-success">{{Session::get('journetDate')}}</span><br>
-                        Bus Id : <span class="badge badge-warning">{{$busid}}</span><br><br>
                             <label for="bus">Select Bus</label>
                             <select class="form-control" id="bus">
-                            <option value="">--Change a bus--</option>
+                            <option value="">--Change  bus--</option>
                                 @foreach ($RouteSpecificbus as $item)
                             
                             <option value="{{$item->id}}">{{$item->bus_name}}</option>
                                 @endforeach
                               </select>
                         </div>
-                                <div class="seat-image">
-                                    <img src="{{asset('public/image/wheel.png')}}" alt="">
-                                </div>
                                 
+                    
                                 @foreach ($seatInfo as $item)
                                     @php
                                     $disabled_seat[] = $item->seat
                                     @endphp
                                 @endforeach
 
+
+                                <div class="seat-container">
+                                <div class="seat-image">
+                                    <img src="{{asset('public/image/wheel.png')}}" alt="">
+                                </div>
                                 @for ($i = 1; $i <= 40; $i++)
                                 
                                 <input type="radio" name="seat" value="{{$i}}" id="{{$i}}"
@@ -73,14 +98,15 @@
                                 >
                                 <label class="btn btn-primary btn-sm btn-seat" for="{{$i}}" data-toggle="tooltip" title="Hooray!">{{$i}}</label>
                                 @endfor
-                                
                                 <div class="reservation-button">
                                     <button type="submit" class="btn btn-success" data-toggle="tooltip" title="Hooray!">Reserve</button>
                                 </div>
+                            </div>
+                                
+                                
                                 
                             </div>
-                            
-                        </div>
+  
                     </form>
                     
                     

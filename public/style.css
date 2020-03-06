@@ -5,7 +5,7 @@ body{
 	min-width: 33%;
 }
 
-.single-seat input{
+.single-seat input[type=radio]{
 	display: none;
 }
 .checkcontainer{
@@ -66,8 +66,32 @@ user-select: none;
   border-radius: 50%;
   background: white;
 }
+.seat-container{
+  text-align: center;
+  position: relative;
+}
+.disable-wrapper::after {
+	content: 'Please Select A Bus First....';
+	display: block;
+	background: rgba(237, 76, 103,.8);
+	position: absolute;
+	top: 0;
+	left: 0px;
+	right: 0;
+	bottom: 0;
+	color: #fff;
+	font-size: 30px;
+	writing-mode: vertical-lr;
+	text-orientation: mixed;
+	width: 100%;
+	padding: 0 116px;
+  border-radius: 5px;
+  font-weight: bold;
+}
 .seat-image {
-	margin-bottom: 20px
+  margin-bottom: 20px;
+  text-align: left;
+   margin-left: 31px;
 }
 .seat-image img{
 	width: 100px
