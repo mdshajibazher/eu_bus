@@ -71,6 +71,10 @@
                             <option value="{{$item->id}}">{{$item->bus_name}}</option>
                                 @endforeach
                               </select>
+                              <div id="spinner">
+                                      <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+                                <span>Loading Please Wait...</span>
+                                </div>
                         </div>
                                 
                     
@@ -96,7 +100,7 @@
                                 @endforeach
                                 @endif
                                 >
-                                <label class="btn btn-primary btn-sm btn-seat" for="{{$i}}" data-toggle="tooltip" title="Hooray!">{{$i}}</label>
+                                <label class="btn btn-info btn-sm btn-seat" for="{{$i}}" data-toggle="tooltip" title="Hooray!">{{$i}}</label>
                                 @endfor
                                 <div class="reservation-button">
                                     <button type="submit" class="btn btn-success" data-toggle="tooltip" title="Hooray!">Reserve</button>
@@ -135,6 +139,7 @@ $('[data-toggle="tooltip"]').tooltip();
 
 $('#bus').change(function(){ 
     var id = $(this).val();
+    $('#spinner').show();
     window.location= id;
 });
 

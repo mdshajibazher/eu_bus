@@ -16,20 +16,37 @@
                 <div class="card-body">
                   
                         <div class="single-seat">
-                        <div class="form-group">
-                            <label for="date">Date</label>
-                            <input type="text" class="form-control" value="{{Session::get('journetDate')}}" disabled>
-                        </div>
-                        <div class="form-group">
-                            <label class="checkcontainer">Route {{Session::get('route')}}
-                                <input type="radio"  value="{{Session::get('route')}}" checked >
-                                <span class="radiobtn"></span>
-                            </label>
-                        </div>
+                                                        <table class="table table-bordered">
+                          <thead>
+                            <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">Specifications</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                               <tr>
+                              <th scope="row">Student: </th>
+                              <td><span class="badge badge-warning">{{Auth::user()->name}}</span></td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Journey Date: </th>
+                              <td><span class="badge badge-success">{{Session::get('journetDate')}}</span></td>
+                            </tr>
+                            <tr>
+                              <th scope="row">For Route: </th>
+                              <td><span class="badge badge-warning">{{Session::get('route')}}</span></td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Bus: </th>
+                              <td><span class="badge badge-danger">No Bus Selected</span></td>
+                            </tr>
+                            
+                          </tbody>
+                        </table>
 
 
                         <div class="form-group">
-                            <label for="bus"> <span class="badge badge-danger">Please Select Bus For Route {{Session::get('route')}}</span></label><br>
+                            <label for="bus">Please Select a Bus </label><br>
                             <select class="form-control" id="bus">
                             <option value="">--select a bus--</option>
                                 @foreach ($RouteSpecificbus as $item)
@@ -37,12 +54,18 @@
                             <option value="{{$item->id}}">{{$item->bus_name}}</option>
                                 @endforeach
                               </select>
+                                <div id="spinner">
+                                      <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+                                <span>Loading Please Wait...</span>
+                                </div>
                         </div>
                         <p>Select Seat: </p>
                         <div class="seat-container disable-wrapper">
-                            
+                            <div class="seat-image">
+                                    <img src="{{asset('public/image/wheel.png')}}" alt="">
+                                </div>
                             @for($i=1;$i<=40;$i++)
-                            <label class="btn btn-primary btn-sm btn-seat">{{$i}}</label>
+                            <label class="btn btn-info btn-sm btn-seat">{{$i}}</label>
                             @endfor
                         </div>
                        
@@ -149,6 +172,7 @@ $('[data-toggle="tooltip"]').tooltip();
 
 $('#bus').change(function(){ 
     var id = $(this).val();
+    $('#spinner').show();
     window.location= "home/seatreserve/"+id;
 });
 

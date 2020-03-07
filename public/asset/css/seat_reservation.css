@@ -9,6 +9,7 @@
 }
 .single-seat label{
     cursor: pointer;
+    position: relative;
 }
 .single-seat input:checked +label {
     background: #f1c40f;

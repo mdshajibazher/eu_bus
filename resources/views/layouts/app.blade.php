@@ -1,19 +1,21 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'EUBUS') }}</title>
 
 
 
     @stack('css')
     <!-- Select 2 css -->
     <link href="{{ asset('public/asset/css/select2.min.css') }}" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="{{asset('public/asset/plugins/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
     <!-- Bootstrap -->
     <link href="{{asset('public/css/bootstrap.min.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('public/style.css') }}">
@@ -75,6 +77,8 @@
     <script src="{{asset('public/asset/plugins/jquery/jquery.js')}}"></script>
     <!-- Bootstrap js-->
     <script src="{{asset('public/asset/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+    <!--Popper Js-->
+    <script src="{{asset('public/js/popper.js')}}"></script>
     <!--Select 2 -->
     <script src="{{asset('public/asset/js/select2.min.js')}}"></script>
      @stack('customjs')
