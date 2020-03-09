@@ -70,6 +70,14 @@
                                 
                             </ul>
                         </li>
+                        <li class="{{Request::is('admin/seat*') ? 'active' : '' }}">
+                            <a href="{{Route('seat.view')}}">
+                                <i class="material-icons">
+                                    airline_seat_recline_extra
+                                    </i>
+                                        <span>Seat Information</span>
+                                </a>
+                            </li>
                     <li class="header">system</li>
 
                     <li>
