@@ -29,54 +29,25 @@
 @endif
 <div class="row">
     
-    <div class="col-lg-6">
-    <a href="{{route('seat.view')}}" class="btn btn-info">Back</a><br><br>
-        <table class="table table-bordered">
-            <tr>
-                <th scope="row">Journey Date</th>
-                <td>{{$JourneyDate}}</td>
-    
-              </tr>
-              <tr>
-                <th scope="row">Bus</th>
-              <td>{{$busname->bus_name}}</td>
-    
-              </tr>
-              <tr>
-                <th scope="row">Booked Seat</th>
-              <td>{{count($ReservationInfo)}}</td>
-    
-              </tr>
-              <tr>
-                <th scope="row">Empty Seat</th>
-              <td>{{40-count($ReservationInfo)}}</td>
-    
-              </tr>
-        </table>
-    </div>  
-    <div class="col-lg-6">
-        
-
-
-        <div class="admin seat-image">
-            <img src="{{asset('public/image/wheel.png')}}" alt="">
-        </div>
-        @for($i=1;$i<=40;$i++)
-        <div class="single-seat">
-        <label class="btn  @foreach($ReservationInfo as $Reserve)
-        @if($Reserve->seat == $i)
-            btn-danger
-        @endif
-        @endforeach   btn-sm btn-seat" for="{{$i}}">{{$i}} 
-            @foreach($ReservationInfo as $Reserve)
-            @if($Reserve->seat == $i)
-            <span class="passenger-tooltip">{{$Reserve->name}}</span>
+    <div class="col-lg-4">
+        <label for="bus">Slect Bus</label>
+        <select class="form-control show-tick " name="bus" id="bus"  data-placeholder="--Select a Bus--" >
+            @if(count($AllBus)> 0)
+                @foreach ($AllBus as $Busitem)
+    <option value="{{$Busitem->id}}">{{$Busitem->bus_name}}</option>
+                @endforeach
             @endif
-            @endforeach
-            </label> 
+            
+    </select>
     </div>
- 
-        @endfor
+    <div class="col-lg-6">
+    <label for="date">Date</label>
+    <input type="text" class="form-control" name="date" id="date" value="{{old('date')}}">
+    </div>
+    <div class="col-lg-2">
+        <div class="for-group" style="margin-top: 20px">
+            <button type="submit" class="btn btn-lg bg-green waves-effect">Show</button>
+        </div>  
     </div>
 </div>        
 

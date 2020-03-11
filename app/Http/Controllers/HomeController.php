@@ -52,11 +52,14 @@ class HomeController extends Controller
         $busid = $id;
         $busName = DB::table('buses')->select('bus_name')->where('id', $busid)->first();
         $RouteSpecificbus  = Bus::all()->where('route', Session::get('route'));
-        $seatInfo = SeatReservation::all()->where('bus',$id)->where('journey_date',Session::get('journetDate'));
-        return view('students.seatreserve',compact('RouteSpecificbus', 'seatInfo', 'busid','busName'));
+        $ReservationInfo = DB::table('seat_reservations')->join('users', 'seat_reservations.student', '=', 'users.id')->select('seat_reservations.*', 'users.name')->where('seat_reservations.bus',$busid)->where('seat_reservations.journey_date',Session::get('journetDate'))->get();
+        return view('students.seatreserve',compact('RouteSpecificbus', 'ReservationInfo', 'busid','busName'));
     }
     public function seatupdate(SeatReserveRequest $request, $id)
     {
+        $reservecheck = SeatReservation::all()->where('journey_date',Session::get('journetDate'))->where('seat',$request['seat']);
+
+        if($reservecheck->isEmpty()){
         $reserve = new SeatReservation;
         $reserve->student = Auth::user()->id;
         $reserve->bus = $id;
@@ -67,6 +70,10 @@ class HomeController extends Controller
         Session::forget('route');
         Session::flash('success', 'Seat Reserved Successfull');
         return redirect(route('home'));
+        }else{
+            Session::flash('booked', 'Seat '.$request['seat'].' Already Booked Try Another');
+            return redirect()->back();
+        }
         
     }
 

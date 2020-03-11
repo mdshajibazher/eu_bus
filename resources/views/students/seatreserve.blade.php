@@ -68,7 +68,7 @@
                             <option value="">--Change  bus--</option>
                                 @foreach ($RouteSpecificbus as $item)
                             
-                            <option value="{{$item->id}}">{{$item->bus_name}}</option>
+                            <option value="{{$item->id}}" @if($busid == $item->id) selected @endif>{{$item->bus_name}}</option>
                                 @endforeach
                               </select>
                               <div id="spinner">
@@ -76,31 +76,28 @@
                                 <span>Loading Please Wait...</span>
                                 </div>
                         </div>
-                                
-                    
-                                @foreach ($seatInfo as $item)
-                                    @php
-                                    $disabled_seat[] = $item->seat
-                                    @endphp
-                                @endforeach
-
-
+                                @if(Session::has('booked'))
+                                <div class="alert alert-danger">
+                                    {{Session::get('booked')}}
+                                </div>
+                            @endif
                                 <div class="seat-container">
                                 <div class="seat-image">
                                     <img src="{{asset('public/image/wheel.png')}}" alt="">
                                 </div>
                                 @for ($i = 1; $i <= 40; $i++)
                                 
-                                <input type="radio" name="seat" value="{{$i}}" id="{{$i}}"
-                                @if(isset($disabled_seat))
-                                @foreach($disabled_seat as $disabled)
-                                @if($disabled == $i)
-                                {{"disabled"}}
+                                <input type="radio" name="seat" value="{{$i}}" id="{{$i}}" @foreach($ReservationInfo as $Reserve)
+                                @if($Reserve->seat == $i)
+                                    disabled
                                 @endif
                                 @endforeach
-                                @endif
                                 >
-                                <label class="btn btn-info btn-sm btn-seat" for="{{$i}}" data-toggle="tooltip" title="Hooray!">{{$i}}</label>
+                                <label class="btn  btn-sm btn-seat" for="{{$i}}">{{$i}}  @foreach($ReservationInfo as $Reserve)
+                                    @if($Reserve->seat == $i)
+                                    <span class="passenger-tooltip">{{$Reserve->name}}</span>
+                                    @endif
+                                    @endforeach</label>
                                 @endfor
                                 <div class="reservation-button">
                                     <button type="submit" class="btn btn-success" data-toggle="tooltip" title="Hooray!">Reserve</button>
@@ -139,8 +136,14 @@ $('[data-toggle="tooltip"]').tooltip();
 
 $('#bus').change(function(){ 
     var id = $(this).val();
-    $('#spinner').show();
-    window.location= id;
+    if(id == false){
+        alert('Please Select a bus');
+    }else{
+        $('#spinner').show();
+        window.location= id;
+    }
+
+    
 });
 
 });

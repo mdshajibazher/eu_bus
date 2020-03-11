@@ -89,10 +89,7 @@
        
 </div>
 
-<!-- Select -->
-<div class="row clearfix">
 
-</div>
 <!-- #END# Select -->
 </form>
 

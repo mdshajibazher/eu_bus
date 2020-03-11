@@ -46,7 +46,7 @@
 
 
                         <div class="form-group">
-                            <label for="bus">Please Select a Bus </label><br>
+                            <label for="bus"><strong> Please Select a Bus </strong></label><br>
                             <select class="form-control" id="bus">
                             <option value="">--select a bus--</option>
                                 @foreach ($RouteSpecificbus as $item)
@@ -59,15 +59,7 @@
                                 <span>Loading Please Wait...</span>
                                 </div>
                         </div>
-                        <p>Select Seat: </p>
-                        <div class="seat-container disable-wrapper">
-                            <div class="seat-image">
-                                    <img src="{{asset('public/image/wheel.png')}}" alt="">
-                                </div>
-                            @for($i=1;$i<=40;$i++)
-                            <label class="btn btn-info btn-sm btn-seat">{{$i}}</label>
-                            @endfor
-                        </div>
+                        
                        
                         
                     </div>
@@ -172,8 +164,14 @@ $('[data-toggle="tooltip"]').tooltip();
 
 $('#bus').change(function(){ 
     var id = $(this).val();
-    $('#spinner').show();
-    window.location= "home/seatreserve/"+id;
+
+    if(id == false){
+        alert('Please Select a bus');
+    }else{
+        $('#spinner').show();
+        window.location= "home/seatreserve/"+id;
+    }
+    
 });
 
 });
