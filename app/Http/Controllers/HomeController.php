@@ -57,8 +57,7 @@ class HomeController extends Controller
     }
     public function seatupdate(SeatReserveRequest $request, $id)
     {
-        $reservecheck = SeatReservation::all()->where('journey_date',Session::get('journetDate'))->where('seat',$request['seat']);
-
+        $reservecheck = SeatReservation::all()->where('bus',$id)->where('seat',$request['seat'])->where('journey_date',Session::get('journetDate'));
         if($reservecheck->isEmpty()){
         $reserve = new SeatReservation;
         $reserve->student = Auth::user()->id;
