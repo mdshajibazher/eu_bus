@@ -127,3 +127,6 @@ display: none;
 .single-seat label:hover .passenger-tooltip{
   display: block;
 }
+.form-group label{
+  font-weight: bold;
+}

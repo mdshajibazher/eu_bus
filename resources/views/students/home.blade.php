@@ -15,8 +15,8 @@
                 <div class="card-header">Dashboard</div>
                 <div class="card-body">
                   
-                        <div class="single-seat">
-                                                        <table class="table table-bordered">
+       
+                    <table class="table table-bordered">
                           <thead>
                             <tr>
                               <th scope="col">#</th>
@@ -61,8 +61,7 @@
                         </div>
                         
                        
-                        
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -92,16 +91,21 @@
                                         {{Session::get('success')}}
                                     </div>
                                 @endif
-                                <p>Welcome,<br> {{Auth::user()->name}}</p>
+                                <p>Welcome,<br> <b>{{Auth::user()->name}}</b></p>
                                 @if(count($availableRouteinf) >0)
                                 <div class="form-group">
                                     <label for="journey_date">Journey Date</label>
                                     <input type="text" class="form-control" id="journey_date" name="journey_date"  placeholder="Enter Journey Date">
                                 </div>
                                 @endif
+                                
                                 <div class="form-group">
-                                    <label for="journey_date">Your Area: </label>
+                                    <label for="journey_date">Your Area: </label><br>
                                     <span class="badge badge-warning">{{$userAreaname}}</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="journey_date">Address: </label> <br>
+                                    <span>{{Auth::user()->address}}</span>
                                 </div>
                                 <div class="form-group available-route">
                                     <p>Your Available Routes</p>
