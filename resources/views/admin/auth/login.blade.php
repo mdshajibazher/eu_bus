@@ -9,7 +9,7 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{asset('public/asset/plugins/font-awesome/css/font-awesome.min.css')}}">
   <!-- App Css style -->
-<link rel="stylesheet" href="{{asset('public/css/app.css')}}">
+<link rel="stylesheet" href="{{asset('public/css/bootstrap.min.css')}}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   {{-- login css --}}
