@@ -32,10 +32,11 @@ Route::post('admin/login', 'Auth\AdminLoginController@adminLoginSubmit')->name('
 
 Route::group(['prefix'=> 'admin','middleware' => ['auth:admin']], function(){
     Route::get('dashboard', 'adminController@dashboard')->name('admin.dashboard');
-    Route::get('busroute/{busroute}/edit', 'BusRouteController@edit')->name('busroute.edit');
-    Route::put('busroute/{busroute}', 'BusRouteController@update')->name('busroute.update');
-    Route::get('bus/{routeid}/edit', 'BusController@edit')->name('bus.edit');
-    Route::put('bus/{routeid}', 'BusController@update')->name('bus.update');
+    Route::resource('studentbus', 'BusesController');
+    Route::get('busroute/{busroute}/edit', 'AreaAssignController@edit')->name('busroute.edit');
+    Route::put('busroute/{busroute}', 'AreaAssignController@update')->name('busroute.update');
+    Route::get('bus/{routeid}/edit', 'BusAssignController@edit')->name('bus.edit');
+    Route::put('bus/{routeid}', 'BusAssignController@update')->name('bus.update');
     Route::get('seat', 'SeatReservationController@index')->name('seat.view');
     Route::post('seat', 'SeatReservationController@show')->name('seat.show');
     Route::get('logout', 'Auth\AdminLoginController@adminLogout')->name('admin.logout');

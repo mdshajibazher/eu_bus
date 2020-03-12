@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Brian2694\Toastr\Facades\Toastr;
 use App\Http\Requests\busrouteValidationRequest;
 
-class BusRouteController extends Controller
+class AreaAssignController extends Controller
 {
 
     public function show($id)

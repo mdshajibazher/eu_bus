@@ -113,7 +113,7 @@ display: none;
 /* Custom Tool Tip */
 .passenger-tooltip{
   position: absolute !important;
-  top: -42px;
+  top: -49px !important;
   background: rgba(0,0,0,.8);
   padding: 2px 10px;
   border-radius: 5px;

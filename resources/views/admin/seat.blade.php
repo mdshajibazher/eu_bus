@@ -12,7 +12,7 @@
         <div class="card">
             <div class="header">
                 <h2 class="text-center">
-                    SELCT BUS AND JOURNEY DATE
+                    Seat Resrevation Infromation On {{$JourneyDate}}
                 </h2>
             </div>
             <div class="body">
@@ -70,7 +70,7 @@
         @endforeach   btn-sm btn-seat" for="{{$i}}">{{$i}} 
             @foreach($ReservationInfo as $Reserve)
             @if($Reserve->seat == $i)
-            <span class="passenger-tooltip">{{$Reserve->name}}</span>
+            <span class="passenger-tooltip">{{$Reserve->name}} At <br> {{$Reserve->created_at}} </span>
             @endif
             @endforeach
             </label> 
@@ -91,12 +91,9 @@
     </div>
 
        
-</div>
 
-<!-- Select -->
-<div class="row clearfix">
 
-</div>
+
 <!-- #END# Select -->
 </form>
 

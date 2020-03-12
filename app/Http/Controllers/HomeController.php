@@ -50,13 +50,14 @@ class HomeController extends Controller
     public function seatedit($id)
     {
         $busid = $id;
+        $AlreadyReservecheck = SeatReservation::all()->where('student',Auth::user()->id)->where('journey_date',Session::get('journetDate'));
         $busName = DB::table('buses')->select('bus_name')->where('id', $busid)->first();
         $RouteSpecificbus  = Bus::all()->where('route', Session::get('route'));
         $ReservationInfo = DB::table('seat_reservations')->join('users', 'seat_reservations.student', '=', 'users.id')->select('seat_reservations.*', 'users.name')->where('seat_reservations.bus',$busid)->where('seat_reservations.journey_date',Session::get('journetDate'))->get();
-        return view('students.seatreserve',compact('RouteSpecificbus', 'ReservationInfo', 'busid','busName'));
+        return view('students.seatreserve',compact('RouteSpecificbus', 'ReservationInfo', 'busid','busName', 'AlreadyReservecheck'));
     }
     public function seatupdate(SeatReserveRequest $request, $id)
-    {
+    {   
         $reservecheck = SeatReservation::all()->where('bus',$id)->where('seat',$request['seat'])->where('journey_date',Session::get('journetDate'));
         if($reservecheck->isEmpty()){
         $reserve = new SeatReservation;

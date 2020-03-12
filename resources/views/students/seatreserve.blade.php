@@ -29,6 +29,11 @@
                         </ul>
                     </div>
                     @endif
+
+                @if(count($AlreadyReservecheck) > 0)
+                    You Are Already Booked For <br>  <span class="bg-danger text-white"> Date: {{Session::get('journetDate')}} </span> <br> Please Hit  <b> Logout </b> And Try Another Date
+                @else
+                
                 <form action="{{route('home.seatupdate',$busid)}}" method="post">
                         @csrf
  
@@ -95,7 +100,7 @@
                                 >
                                 <label class="btn  btn-sm btn-seat" for="{{$i}}">{{$i}}  @foreach($ReservationInfo as $Reserve)
                                     @if($Reserve->seat == $i)
-                                    <span class="passenger-tooltip">{{$Reserve->name}}</span>
+                                    <span class="passenger-tooltip">{{$Reserve->name}} At <br>{{$Reserve->created_at}}</span>
                                     @endif
                                     @endforeach</label>
                                 @endfor
@@ -109,7 +114,7 @@
                             </div>
   
                     </form>
-                    
+                    @endif
                     
                 </div>
             </div>
