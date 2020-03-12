@@ -1,6 +1,9 @@
 body{
 	background: #ecf0f1;
 }
+body.logged_in{
+  background: #FFC312;
+}
 .demo-checkbox label, .demo-radio-button label{
 	min-width: 33%;
 }

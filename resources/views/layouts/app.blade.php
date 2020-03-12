@@ -20,7 +20,7 @@
     <link href="{{asset('public/css/bootstrap.min.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('public/style.css') }}">
 </head>
-<body>
+<body class="{{Auth::check() ? 'logged_in' : ''}}">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">

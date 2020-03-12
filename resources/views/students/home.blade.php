@@ -101,7 +101,7 @@
                                 
                                 <div class="form-group">
                                     <label for="journey_date">Your Area: </label><br>
-                                    <span class="badge badge-warning">{{$userAreaname}}</span>
+                                    <span class="badge badge-info">{{$userAreaname}}</span>
                                 </div>
                                 <div class="form-group">
                                     <label for="journey_date">Address: </label> <br>
