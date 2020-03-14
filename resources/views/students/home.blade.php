@@ -12,7 +12,7 @@
         
         <div class="col-md-4">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">Booking</div>
                 <div class="card-body">
                   
        
@@ -67,9 +67,9 @@
         </div>
         @else
         
-        <div class="col-md-4">
+        <div class="col-md-6">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">Booking</div>
                 <div class="card-body">
                     @if ($errors->any())
                     <div class="alert alert-danger">
@@ -85,7 +85,7 @@
                         @csrf
                         <div class="row">
                             
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 @if(Session::has('success'))
                                     <div class="alert alert-success">
                                         {{Session::get('success')}}
@@ -94,21 +94,26 @@
                                 <p>Welcome,<br> <b>{{Auth::user()->name}}</b></p>
                                 @if(count($availableRouteinf) >0)
                                 <div class="form-group">
-                                    <label for="journey_date">Journey Date</label>
-                                    <input type="text" class="form-control" id="journey_date" name="journey_date"  placeholder="Enter Journey Date">
+                                    <label for="journey_date">Select Journey Date</label>
+                                    <input type="text" class="form-control" id="journey_date" name="journey_date"  placeholder="Slect Journey Date...">
+                                    <small class="bg-danger text-white booking-note">Note: Your Can Only Book a seat From Today to Next <b>15</b> Days</small>
                                 </div>
                                 @endif
                                 
                                 <div class="form-group">
                                     <label for="journey_date">Your Area: </label><br>
-                                    <span class="badge badge-info">{{$userAreaname}}</span>
+                                    <span class="badge badge-warning">{{$userAreaname}}</span>
                                 </div>
                                 <div class="form-group">
                                     <label for="journey_date">Address: </label> <br>
                                     <span>{{Auth::user()->address}}</span>
                                 </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                
                                 <div class="form-group available-route">
-                                    <p>Your Available Routes</p>
+                                    <label>Your Available Routes</label>
                                     @if(count($availableRouteinf) >0)
                                     @foreach ($availableRouteinf as $routeitem)
                                     
@@ -133,11 +138,12 @@
                                     @endif
                                     
                                 </div>
+                                
                                 @if(count($availableRouteinf) >0)
                                 <button type="submit" class="btn btn-success">Submit</button>
                                 @endif
-                            </div>
                             
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -156,7 +162,7 @@
 <script>
 flatpickr('#journey_date',{
 minDate: "today",
-maxDate: new Date().fp_incr(7),
+maxDate: new Date().fp_incr(15),
 dateFormat: "d-m-Y",
 });
 $(document).ready(function() {
