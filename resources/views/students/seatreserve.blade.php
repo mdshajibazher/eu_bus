@@ -77,9 +77,17 @@
                                 @endforeach
                               </select>
                               <div id="spinner">
-                                      <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
-                                <span>Loading Please Wait...</span>
-                                </div>
+                                <div class="preloader pl-size-sm">
+                                  <div class="spinner-layer pl-black">
+                                      <div class="circle-clipper left">
+                                          <div class="circle"></div>
+                                      </div>
+                                      <div class="circle-clipper right">
+                                          <div class="circle"></div>
+                                      </div>
+                                  </div>
+                              </div> &nbsp;<b> Please Wait.......<b> 
+                                  </div>
                         </div>
                                 @if(Session::has('booked'))
                                 <div class="alert alert-danger">

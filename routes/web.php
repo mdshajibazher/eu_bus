@@ -22,7 +22,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('/home', 'HomeController@insert')->name('home.insert');
     Route::get('home/seatreserve/{bus}','HomeController@seatedit')->name('home.seatreserve');
     Route::post('home/seatreserve/{bus}','HomeController@seatupdate')->name('home.seatupdate');
-
+    Route::resource('/information','StudentJourneyInfromationController');
 });
 
 

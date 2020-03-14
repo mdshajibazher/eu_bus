@@ -38,7 +38,7 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav ml-auto main-menu">
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -50,6 +50,12 @@
                                 </li>
                             @endif
                         @else
+                        <li class="nav-item">
+                        <a class="nav-link" href="{{route('information.index')}}">Update Journey Information</a> 
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{{route('home')}}">Seat Reservation</a> 
+                     </li>
                             <li class="nav-item">
                                    <a class="nav-link" href="">{{ Auth::user()->name }}</a> 
                             </li>

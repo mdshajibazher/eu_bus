@@ -54,9 +54,17 @@
                             <option value="{{$item->id}}">{{$item->bus_name}}</option>
                                 @endforeach
                               </select>
-                                <div id="spinner">
-                                      <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
-                                <span>Loading Please Wait...</span>
+                              <div id="spinner">
+                              <div class="preloader pl-size-sm">
+                                <div class="spinner-layer pl-black">
+                                    <div class="circle-clipper left">
+                                        <div class="circle"></div>
+                                    </div>
+                                    <div class="circle-clipper right">
+                                        <div class="circle"></div>
+                                    </div>
+                                </div>
+                            </div> &nbsp;<b> Please Wait.......<b> 
                                 </div>
                         </div>
                         
@@ -96,7 +104,7 @@
                                 <div class="form-group">
                                     <label for="journey_date">Select Journey Date</label>
                                     <input type="text" class="form-control" id="journey_date" name="journey_date"  placeholder="Slect Journey Date...">
-                                    <small class="bg-danger text-white booking-note">Note: Your Can Only Book a seat From Today to Next <b>15</b> Days</small>
+                                    <small class="bg-danger text-white booking-note">Note: You Can Only Book a seat From Today to Next <b>15</b> Days</small>
                                 </div>
                                 @endif
                                 
