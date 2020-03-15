@@ -32,6 +32,7 @@ Route::post('admin/login', 'Auth\AdminLoginController@adminLoginSubmit')->name('
 
 Route::group(['prefix'=> 'admin','middleware' => ['auth:admin']], function(){
     Route::get('dashboard', 'adminController@dashboard')->name('admin.dashboard');
+    Route::resource('timeslot', 'TimeSlotController');
     Route::resource('studentbus', 'BusesController');
     Route::get('busroute/{busroute}/edit', 'AreaAssignController@edit')->name('busroute.edit');
     Route::put('busroute/{busroute}', 'AreaAssignController@update')->name('busroute.update');

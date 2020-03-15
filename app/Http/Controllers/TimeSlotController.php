@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\TimeSlot;
 use Illuminate\Http\Request;
 
-class StudentJourneyInfromationController extends Controller
+class TimeSlotController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,7 @@ class StudentJourneyInfromationController extends Controller
      */
     public function index()
     {
-        return view('students.information.index');
+        return view('admin.slot.index');
     }
 
     /**
@@ -23,7 +24,7 @@ class StudentJourneyInfromationController extends Controller
      */
     public function create()
     {
-        return view('students.information.index');
+        //
     }
 
     /**
@@ -40,10 +41,10 @@ class StudentJourneyInfromationController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\TimeSlot  $timeSlot
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(TimeSlot $timeSlot)
     {
         //
     }
@@ -51,10 +52,10 @@ class StudentJourneyInfromationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\TimeSlot  $timeSlot
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(TimeSlot $timeSlot)
     {
         //
     }
@@ -63,10 +64,10 @@ class StudentJourneyInfromationController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\TimeSlot  $timeSlot
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, TimeSlot $timeSlot)
     {
         //
     }
@@ -74,10 +75,10 @@ class StudentJourneyInfromationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\TimeSlot  $timeSlot
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(TimeSlot $timeSlot)
     {
         //
     }

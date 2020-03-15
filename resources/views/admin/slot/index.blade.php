@@ -1,3 +1,4 @@
+
 @extends('layouts.admin.app')
 
 @section('content')
@@ -11,7 +12,7 @@
         <div class="card">
             <div class="header">
                 <h2 class="text-center">
-                    SELCT  JOURNEY DATE USING DATEPICKER
+                    Time Slot For Students
                 </h2>
             </div>
             <div class="body">
@@ -27,15 +28,7 @@
     </div>
 @endif
 <div class="row">
-    <div class="col-lg-10">
-    <label for="date">Date</label>
-    <input type="text" class="form-control" name="date" id="date" value="{{old('date')}}">
-    </div>
-    <div class="col-lg-2">
-        <div class="for-group" style="margin-top: 20px">
-            <button type="submit" class="btn btn-lg bg-green waves-effect">Show</button>
-        </div>  
-    </div>
+    <h1>Something</h1>
 </div>        
 
 

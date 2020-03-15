@@ -51,7 +51,7 @@
                             @endif
                         @else
                         <li class="nav-item">
-                        <a class="nav-link" href="{{route('information.index')}}">Update Journey Information</a> 
+                        <a class="nav-link" href="{{route('information.index')}}">Update Information</a> 
                      </li>
                      <li class="nav-item">
                         <a class="nav-link" href="{{route('home')}}">Seat Reservation</a> 

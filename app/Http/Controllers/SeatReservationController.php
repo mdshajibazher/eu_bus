@@ -11,15 +11,20 @@ use App\Http\Requests\adminSeatShowRequest;
 class SeatReservationController extends Controller
 {
     public function index(){
-        $AllBus = Bus::all();
-        return view('admin.seatrequest', compact('AllBus'));
+        return view('admin.seatrequest');
     }
 
     public function show(adminSeatShowRequest $request){
+        $allbus = Bus::all();
         $busId = $request['bus'];
         $JourneyDate = $request['date'];
-        $busname = DB::table('buses')->select('bus_name')->where('id', $busId)->first();
-        $ReservationInfo = DB::table('seat_reservations')->join('users', 'seat_reservations.student', '=', 'users.id')->select('seat_reservations.*', 'users.name')->where('seat_reservations.bus',$busId)->where('seat_reservations.journey_date',$JourneyDate)->get();
+        
+        
+        foreach($allbus as $buslist){
+            $busname[] = DB::table('buses')->select('bus_name')->where('id', $buslist['id'])->first();
+            $ReservationInfo[] = DB::table('seat_reservations')->join('users', 'seat_reservations.student', '=', 'users.id')->select('seat_reservations.*', 'users.name')->where('seat_reservations.bus',$buslist['id'])->where('seat_reservations.journey_date',$JourneyDate)->get();
+        }
+        
         return view('admin.seat', compact('JourneyDate', 'busname', 'ReservationInfo'));
     }
 }

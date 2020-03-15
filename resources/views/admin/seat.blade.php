@@ -3,73 +3,77 @@
 @section('content')
 
 <!-- Multi Select -->
-<form action="" method="POST">
-@csrf
+
 
 <div class="row clearfix">
-    <div class="col-lg-2"></div>
-    <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 ">
+    <div class="col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 col-xs-12 ">
         <div class="card">
             <div class="header">
                 <h2 class="text-center">
-                    Seat Resrevation Infromation On {{$JourneyDate}}
+                    <a href="{{route('seat.view')}}" class="btn btn-info">Back</a>
+                    Seat Resrevation Information On <span class="font-bold col-pink">{{$JourneyDate}}
+                    
                 </h2>
             </div>
+        </div>
+        @for($i=0; $i<count($ReservationInfo); $i++)
+        <div class="card">
+        <div class="header bg-blue-grey">
+                <h2 class="text-center">
+                   Reservation Information - <b>( {{$busname[$i]->bus_name}} )</b>
+                </h2>
+            </div>
+
+         
             <div class="body">
 
             
-                @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+
 <div class="row">
     
+
+
     <div class="col-lg-6">
-    <a href="{{route('seat.view')}}" class="btn btn-info">Back</a><br><br>
-        <table class="table table-bordered">
+    
+        <table class="table table-bordered" >
             <tr>
                 <th scope="row">Journey Date</th>
-                <td>{{$JourneyDate}}</td>
+                <td><span class="badge bg-teal">{{$JourneyDate}}</span></td>
     
               </tr>
               <tr>
                 <th scope="row">Bus</th>
-              <td>{{$busname->bus_name}}</td>
+              <td> <span class="badge bg-pink">{{$busname[$i]->bus_name}}</span></td>
     
               </tr>
               <tr>
                 <th scope="row">Booked Seat</th>
-              <td>{{count($ReservationInfo)}}</td>
+              <td><span class="badge bg-red">{{count($ReservationInfo[$i])}}</span></td>
     
               </tr>
               <tr>
                 <th scope="row">Empty Seat</th>
-              <td>{{40-count($ReservationInfo)}}</td>
+              <td><span class="badge bg-dark">{{40-count($ReservationInfo[$i])}}</span></td>
     
               </tr>
         </table>
     </div>  
     <div class="col-lg-6">
-        
+        @if(count($ReservationInfo[$i])>0)
 
 
         <div class="admin seat-image">
             <img src="{{asset('public/image/wheel.png')}}" alt="">
         </div>
-        @for($i=1;$i<=40;$i++)
+        @for($j=1;$j<=40;$j++)
         <div class="single-seat">
-        <label class="btn  @foreach($ReservationInfo as $Reserve)
-        @if($Reserve->seat == $i)
+        <label class="btn  @foreach($ReservationInfo[$i] as $Reserve)
+        @if($Reserve->seat == $j)
             btn-danger
         @endif
-        @endforeach   btn-sm btn-seat" for="{{$i}}">{{$i}} 
-            @foreach($ReservationInfo as $Reserve)
-            @if($Reserve->seat == $i)
+        @endforeach   btn-sm btn-seat" for="{{$j}}">{{$j}} 
+            @foreach($ReservationInfo[$i] as $Reserve)
+            @if($Reserve->seat == $j)
             <span class="passenger-tooltip">{{$Reserve->name}} At <br> {{$Reserve->created_at}} </span>
             @endif
             @endforeach
@@ -77,25 +81,30 @@
     </div>
  
         @endfor
-    </div>
-</div>        
+
+        @else
+        <span class="bg-pink not-found"><i class="material-icons">
+            not_interested
+            </i>Sorry No Seat Reservation Data Found</span>
+
+        
+    @endif
 
 
-
-
-
-
-            </div>
-            
+                </div>
+            </div>        
         </div>
-    </div>
 
+        @endfor
+    </div>
+</div>
+  
        
 
 
 
 <!-- #END# Select -->
-</form>
+
 
 @endsection
 

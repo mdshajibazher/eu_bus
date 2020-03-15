@@ -24,7 +24,6 @@ class adminSeatShowRequest extends FormRequest
     public function rules()
     {
         return [
-            'bus' => 'required',
             'date' => 'required',
         ];
     }

@@ -36,6 +36,15 @@
                             <span>Dashboard</span>
                         </a>
                     </li>
+
+                    <li class="{{Request::is('admin/timeslot*') ? 'active' : '' }}">
+                        <a href="{{route('timeslot.index')}}">
+                            <i class="material-icons">
+                                access_time
+                                </i>
+                                <span>Time Slot</span>
+                            </a>
+                        </li>
                     <li class="{{Request::is('admin/busroute*') ? 'active' : '' }}">
                         <a class="menu-toggle" href="javascript:void(0);">
                             <i class="material-icons">
@@ -59,7 +68,7 @@
                     <li class="{{Request::is('admin/busroute*') ? 'active' : '' }}">
                     <a class="menu-toggle" href="javascript:void(0);">
                         <i class="material-icons">room</i>
-                                <span>Area Assign For Route</span>
+                                <span>Area Assign</span>
                         </a>
                         <ul class="ml-menu">
                             @foreach ($eu_bus_route as $routeItem)
@@ -76,7 +85,7 @@
                             <i class="material-icons">
                                 directions_bus
                                 </i>
-                                    <span>Bus Assign For Route</span>
+                                    <span>Bus Assign</span>
                             </a>
                             <ul class="ml-menu">
                                 @foreach ($eu_bus_route as $routeItem)
