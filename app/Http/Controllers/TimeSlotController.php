@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\TimeSlot;
 use Illuminate\Http\Request;
+use Brian2694\Toastr\Facades\Toastr;
+use App\Http\Requests\TimeSlotValidationRequest;
 
 class TimeSlotController extends Controller
 {
@@ -25,7 +27,7 @@ class TimeSlotController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.slot.create');
     }
 
     /**
@@ -34,9 +36,15 @@ class TimeSlotController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TimeSlotValidationRequest $request)
     {
-        //
+        $slot = new TimeSlot;
+        $slot->slot_name = $request['slot'];
+        $slot->start = $request['start'];
+        $slot->end = $request['end'];
+        $slot->save();
+        Toastr::success('Slot Saved Successfully', 'success');
+        return redirect(route('timeslot.index'));
     }
 
     /**

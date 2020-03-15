@@ -11,9 +11,9 @@
                 <h2 class="text-center">
                     Time Slot For Students
                 </h2>
-                <a href="#" class="btn btn-primary">Add New +</a>
+            <a href="{{route('timeslot.create')}}" class="btn btn-primary waves-effect">Add New +</a>
             </div>
-            <div class="body">
+            <div class="body table-responsive">
 
             
                 @if ($errors->any())
@@ -32,9 +32,6 @@
             @endphp
 
                     @if(count($timeslot) > 0)
-
-                        
-                        <div class="body table-responsive">
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -52,8 +49,8 @@
                                         <td>{{$slot['slot_name']}}</td>
                                         <td>{{$slot['start']}}</td>
                                         <td>{{$slot['end']}}</td>
-                                        <td><a href="#" class="btn btn-info btn-sm"><i class="material-icons"> 
-                                            edit </a> &nbsp; | <a href="#" class="btn btn-danger btn-sm"><i class="material-icons">
+                                        <td><a href="#" class="btn btn-info btn-sm waves-effect"><i class="material-icons"> 
+                                            edit </a> &nbsp; | <a href="#" class="btn btn-danger btn-sm waves-effect"><i class="material-icons">
                                                 delete
                                             </i></a>
                                         </td>
@@ -61,15 +58,9 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                        </div>
+                      
                         
                     @endif
-
-
-
-
-
-
 
             </div>
             
