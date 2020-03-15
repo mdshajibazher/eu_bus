@@ -3,9 +3,6 @@
 
 @section('content')
 
-<!-- Multi Select -->
-<form action="" method="POST">
-@csrf
 
 <div class="row clearfix">
     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 col-lg-offset-3">
@@ -14,6 +11,7 @@
                 <h2 class="text-center">
                     Time Slot For Students
                 </h2>
+                <a href="#" class="btn btn-primary">Add New +</a>
             </div>
             <div class="body">
 
@@ -27,9 +25,46 @@
         </ul>
     </div>
 @endif
-<div class="row">
-    <h1>Something</h1>
-</div>        
+
+         <!-- Basic Table -->
+            @php
+                $i=1;    
+            @endphp
+
+                    @if(count($timeslot) > 0)
+
+                        
+                        <div class="body table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Slot Name</th>
+                                        <th>Start Time</th>
+                                        <th>End Time</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($timeslot as $slot)
+                                    <tr>
+                                    <th scope="row">{{$i++}}</th>
+                                        <td>{{$slot['slot_name']}}</td>
+                                        <td>{{$slot['start']}}</td>
+                                        <td>{{$slot['end']}}</td>
+                                        <td><a href="#" class="btn btn-info btn-sm"><i class="material-icons"> 
+                                            edit </a> &nbsp; | <a href="#" class="btn btn-danger btn-sm"><i class="material-icons">
+                                                delete
+                                            </i></a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                    @endif
+
 
 
 
@@ -44,12 +79,7 @@
        
 </div>
 
-<!-- Select -->
-<div class="row clearfix">
 
-</div>
-<!-- #END# Select -->
-</form>
 
 @endsection
 

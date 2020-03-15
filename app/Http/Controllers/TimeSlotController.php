@@ -14,7 +14,8 @@ class TimeSlotController extends Controller
      */
     public function index()
     {
-        return view('admin.slot.index');
+        $timeslot = TimeSlot::all();
+        return view('admin.slot.index', compact('timeslot'));
     }
 
     /**

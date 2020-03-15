@@ -16,6 +16,9 @@
                 </h2>
             </div>
         </div>
+        @php
+            $seat_sum = 0;
+        @endphp
         @for($i=0; $i<count($ReservationInfo); $i++)
         <div class="card">
         <div class="header bg-blue-grey">
@@ -51,6 +54,9 @@
               <td><span class="badge bg-red">{{count($ReservationInfo[$i])}}</span></td>
     
               </tr>
+              @php
+                $seat_sum +=  count($ReservationInfo[$i])
+              @endphp
               <tr>
                 <th scope="row">Empty Seat</th>
               <td><span class="badge bg-dark">{{40-count($ReservationInfo[$i])}}</span></td>
@@ -89,17 +95,39 @@
 
         
     @endif
-
+            
 
                 </div>
             </div>        
         </div>
 
         @endfor
+        
     </div>
 </div>
-  
-       
+  <div class="row">
+<div class="col-lg-4 col-lg-offset-4">
+    <table class="table table-bordered">
+
+        <tr>
+            <th scope="col">Total  Seat</th>
+            <th><span class="badge bg-orange">{{count($ReservationInfo)*40}}</span></th>
+          </tr>
+          <tr>
+            <th scope="col">Total Reserved Seat</th>
+            <th><span class="badge bg-green">{{$seat_sum}}</span></th>
+          </tr>
+
+          <tr>
+            <th scope="col">Total Empty Seat</th>
+            <th><span class="badge bg-info">{{(count($ReservationInfo)*40)-($seat_sum)}}</span></th>
+
+          </tr>
+
+
+      </table>
+    </div>
+</div>
 
 
 
