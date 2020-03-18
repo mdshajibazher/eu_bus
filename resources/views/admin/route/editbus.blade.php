@@ -8,8 +8,7 @@
 @csrf
 @method('PUT')
 <div class="row clearfix">
-    <div class="col-lg-2"></div>
-    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 ">
+    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 col-lg-offset-3">
         <div class="card">
             <div class="header">
                 <h2 class="text-center">

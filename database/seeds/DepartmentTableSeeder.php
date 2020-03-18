@@ -11,17 +11,17 @@ class DepartmentTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('department')->insert(
+        DB::table('departments')->insert(
             ['name' => 'CSE','description' => 'Computer Science And Engineering']
         );
-        DB::table('department')->insert(
+        DB::table('departments')->insert(
             ['name' => 'EEE','description' => 'Electrical & Electronics Engineering']
         );
-        DB::table('department')->insert(
+        DB::table('departments')->insert(
             ['name' => 'BBA','description' => 'Bachelor of Business Administration'],
 
         );
-        DB::table('department')->insert(
+        DB::table('departments')->insert(
             ['name' => 'LAW','description' => 'Law Department'],
         );
     }

@@ -30,7 +30,7 @@ class CreateUsersTable extends Migration
             $table->timestamps();
             $table->foreign('area')->references('id')->on('area');
             $table->foreign('bus_route')->references('id')->on('route');
-            $table->foreign('department')->references('id')->on('department');
+            $table->foreign('department')->references('id')->on('departments');
         });
     }
 

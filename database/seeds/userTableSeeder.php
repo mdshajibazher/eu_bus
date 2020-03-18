@@ -25,19 +25,6 @@ class userTableSeeder extends Seeder
             ],
 
         );
-        DB::table('users')->insert(
-            [
-                'name' => 'Dummy Student Name',
-                'studentid' => '202002',
-                'email' => 'info@example.com',
-                'phone' => '01918009463',
-                'department' => 2,
-                'address' => 'Flat-GF, H-7, Road-4, Block-C,Nobodoi Housing, Mohammadpur, Dhaka',
-                'area' => 2,
-                'image' => 'default.png',
-                'password' => Hash::make('12345678')
-            ]
-
-        );
+        factory(App\User::class, 300)->create();
     }
 }

@@ -36,6 +36,15 @@
                             <span>Dashboard</span>
                         </a>
                     </li>
+                    <li class="{{Request::is('admin/students*') ? 'active' : '' }}">
+                        <a href="{{route('students.index')}}">
+                            <i class="material-icons">
+                                people
+                                </i>
+                                <span>Students</span>
+                            </a>
+                        </li>
+    
 
                     <li class="{{Request::is('admin/timeslot*') ? 'active' : '' }}">
                         <a href="{{route('timeslot.index')}}">

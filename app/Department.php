@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Department extends Model
 {
-    protected $table = 'department';
+
+    protected $table = 'departments';
     protected $fillable = [
         'name','description',
     ];
@@ -19,4 +20,10 @@ class Department extends Model
     protected $hidden = [
         'created_at', 'updated_at',
     ];
+
+
+    public function users(){
+        return $this->belongsTo('App\User');
+    }
+
 }
