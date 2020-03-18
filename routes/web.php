@@ -41,6 +41,8 @@ Route::group(['prefix'=> 'admin','middleware' => ['auth:admin']], function(){
     Route::put('bus/{routeid}', 'BusAssignController@update')->name('bus.update');
     Route::get('seat', 'SeatReservationController@index')->name('seat.view');
     Route::post('seat', 'SeatReservationController@show')->name('seat.show');
+    Route::get('information', 'InformationController@index')->name('information.request');
+    Route::post('information', 'InformationController@retriveInformation')->name('information.retrive');
     Route::get('logout', 'Auth\AdminLoginController@adminLogout')->name('admin.logout');
 
 });
