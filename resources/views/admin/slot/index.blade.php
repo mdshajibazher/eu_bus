@@ -47,12 +47,10 @@
                                     <tr>
                                     <th scope="row">{{$i++}}</th>
                                         <td>{{$slot['slot_name']}}</td>
-                                        <td>{{$slot['start']}}</td>
-                                        <td>{{$slot['end']}}</td>
-                                        <td><a href="#" class="btn btn-info btn-sm waves-effect"><i class="material-icons"> 
-                                            edit </a> &nbsp; | <a href="#" class="btn btn-danger btn-sm waves-effect"><i class="material-icons">
-                                                delete
-                                            </i></a>
+                                        <td>{{date('h:i a', strtotime($slot['start']))}}</td>
+                                        <td>{{date('h:i a', strtotime($slot['end']))}}</td>
+                                    <td><a href="{{route('timeslot.edit',$slot['id'])}}" class="btn btn-info btn-sm waves-effect"><i class="material-icons"> 
+                                            edit </a></a>
                                         </td>
                                     </tr>
                                     @endforeach

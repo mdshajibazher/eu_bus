@@ -17,7 +17,7 @@ class BusesController extends Controller
     public function index()
     {
         $bus = Bus::all();
-        return view('admin.buslist', compact('bus'));
+        return view('admin.bus.buslist', compact('bus'));
     }
 
     /**
@@ -27,7 +27,7 @@ class BusesController extends Controller
      */
     public function create()
     {
-        return view('admin.addbus');
+        return view('admin.bus.addbus');
     }
 
     /**
@@ -64,7 +64,8 @@ class BusesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $businf = Bus::find($id)->first();
+        return view('admin.bus.editbus',compact('businf'));
     }
 
     /**
@@ -74,9 +75,14 @@ class BusesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AddBusRequest $request, $id)
     {
-        //
+        $businf = Bus::find($id)->first();
+        $businf->bus_name = $request['bus'];
+        $businf->update();
+        Toastr::success('Bus Updated Successfully', 'success');
+        return redirect(route('studentbus.index'));
+
     }
 
     /**

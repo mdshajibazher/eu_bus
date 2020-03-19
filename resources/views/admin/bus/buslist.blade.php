@@ -7,12 +7,16 @@
 <div class="row clearfix">
     <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12">
         <div class="card">
+            
             <div class="header">
                 <h2>
-                    BUS DETAILS
-                </h2>
+                    BUS DETAILS 
+                </h2><br>
+                <a href="{{route('studentbus.create')}}" class="btn btn-info">Add New Bus</a>
+            
                 
             </div>
+            
             <div class="body table-responsive">
                 <table class="table">
                     <thead>
@@ -34,10 +38,8 @@
                             <td>{{$busitem->bus_name}}</td>
                             <td>  @if($busitem->route == NULL) <span class="badge bg-red">No Route Assigned {{$busitem->route}}</span> @else <span class="badge bg-green">Route {{$busitem->route}}</span> @endif</td>
                             <td>@if($busitem->updated_at == NULL) Not Updated @else {{$busitem->updated_at}} @endif</td>
-                            <td><a href="#" class="btn btn-info btn-sm"><i class="material-icons"> 
-                                edit  </a> | <a href="#" class="btn btn-danger btn-sm"><i class="material-icons">
-                                    delete
-                                </i></a>
+                            <td><a href="{{route('studentbus.edit', $busitem->id)}}" class="btn btn-info btn-sm"><i class="material-icons"> 
+                                edit  </a></a>
                             </td>
                         </tr>
                         @endforeach

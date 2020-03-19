@@ -60,25 +60,13 @@
                                 <span>Time Slot</span>
                             </a>
                         </li>
-                    <li class="{{Request::is('admin/busroute*') ? 'active' : '' }}">
-                        <a class="menu-toggle" href="javascript:void(0);">
+                    <li class="{{Request::is('admin/studentbus*') ? 'active' : '' }}">
+                        <a  href="{{route('studentbus.index')}}">
                             <i class="material-icons">
                                 directions_bus
                                 </i>
                                     <span>Buses</span>
                             </a>
-                            <ul class="ml-menu">
-                                
-                                <li class="{{Request::is('admin/studentbus') ? 'active' : '' }}">
-                                <a href="{{route('studentbus.index')}}">
-                                        <i class="material-icons">format_list_numbered</i> <span>Bus List</span></a>
-                                </li>
-                                <li class="{{Request::is('admin/studentbus/create') ? 'active' : '' }}">
-                                <a href="{{Route('studentbus.create')}}">
-                                        <i class="material-icons">add</i> <span>Add New Bus</span></a>
-                                </li>
-                                
-                            </ul>
                         </li>
                     <li class="{{Request::is('admin/busroute*') ? 'active' : '' }}">
                     <a class="menu-toggle" href="javascript:void(0);">

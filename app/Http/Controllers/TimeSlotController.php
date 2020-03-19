@@ -64,9 +64,10 @@ class TimeSlotController extends Controller
      * @param  \App\TimeSlot  $timeSlot
      * @return \Illuminate\Http\Response
      */
-    public function edit(TimeSlot $timeSlot)
+    public function edit($id)
     {
-        //
+        $slotinf = TimeSlot::find($id)->first();
+        return view('admin.slot.edit', compact('slotinf'));
     }
 
     /**
@@ -76,9 +77,15 @@ class TimeSlotController extends Controller
      * @param  \App\TimeSlot  $timeSlot
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TimeSlot $timeSlot)
+    public function update(TimeSlotValidationRequest $request,$id)
     {
-        //
+        $slot = TimeSlot::find($id);
+        $slot->slot_name = $request['slot'];
+        $slot->start = $request['start'];
+        $slot->end = $request['end'];
+        $slot->update();
+        Toastr::success('Slot Updated Successfully', 'success');
+        return redirect(route('timeslot.index'));
     }
 
     /**

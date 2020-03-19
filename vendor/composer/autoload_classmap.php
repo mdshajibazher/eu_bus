@@ -40,6 +40,7 @@ return array(
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Http\\Requests\\AddBusRequest' => $baseDir . '/app/Http/Requests/AddBusRequest.php',
+    'App\\Http\\Requests\\InformationValidationRequest' => $baseDir . '/app/Http/Requests/InformationValidationRequest.php',
     'App\\Http\\Requests\\JourneyInitialValidationRequest' => $baseDir . '/app/Http/Requests/JourneyInitialValidationRequest.php',
     'App\\Http\\Requests\\SeatReserveRequest' => $baseDir . '/app/Http/Requests/SeatReserveRequest.php',
     'App\\Http\\Requests\\TimeSlotValidationRequest' => $baseDir . '/app/Http/Requests/TimeSlotValidationRequest.php',

@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Information;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class StudentJourneyInfromationController extends Controller
 {
@@ -13,7 +16,8 @@ class StudentJourneyInfromationController extends Controller
      */
     public function index()
     {
-        return view('students.information.index');
+        $existing_inf = Information::all()->where('student',Auth::user()->id);
+        return view('students.information.index',compact('existing_inf'));
     }
 
     /**
@@ -23,7 +27,7 @@ class StudentJourneyInfromationController extends Controller
      */
     public function create()
     {
-        return view('students.information.index');
+        return view('students.information.create');
     }
 
     /**

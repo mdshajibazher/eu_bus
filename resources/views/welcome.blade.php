@@ -5,35 +5,28 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Laravel</title>
-
-
+        
+        
     
 
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #30336b;
-                background-image: url('public/image/bus.jpg');
-                background-size: cover;
+                background-color: #EA2027;
                 color: #fff;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
                 height: 100vh;
                 margin: 0;
             }
-            body::before{
-                content: '';
-                display: block;
-                background: rgba(0,0,0,.5);
-                width: 100%;
-                height: 100%;
+
+            .wrapper{
                 position: absolute;
-                top: 0;
                 left: 0;
+                top: 0;
                 right: 0;
                 bottom: 0;
             }
-
             .full-height {
                 height: 100vh;
             }
@@ -77,7 +70,8 @@
             }
         </style>
     </head>
-    <body>
+    <body id="particles-js">
+        <div  class="wrapper">
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -95,12 +89,21 @@
             @endif
 
             <div class="content">
+                 <img src="{{asset('public/image/logo.png')}}" alt="">
                 <div class="title m-b-md">
                     EU BUS MANAGEMENT
-                </div>
 
-            {{-- <img src="{{asset('public/image/bus.jpg')}}" alt="eu bus"/> --}}
+                </div>
             </div>
         </div>
+        </div>
+        <script src="{{asset('public/js/jquery.js')}}"></script>
+        <script src="{{asset('public/js/particle.js')}}"></script>
+        <script>
+            particlesJS.load('particles-js', 'public/js/particles.json',function(){
+     console.log('particle.json loaded');
+});
+
+        </script>
     </body>
 </html>

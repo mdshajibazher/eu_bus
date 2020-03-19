@@ -134,10 +134,16 @@ display: none;
   display: block;
 }
 
-.main-menu li.nav-item:hover a:hover{
-  background: #ecf0f1;
-  border-radius: 5px;
+.main-menu {
+	background: #303952;
+	padding: 0 21px;
+  border-radius: 4px;
 }
+.main-menu > li.nav-item >  a, .main-menu > li.nav-item > form a{
+  color: #fff !important;
+  font-weight: bold;
+}
+
 .not-found{
 font-size: 14px;
 display: block;

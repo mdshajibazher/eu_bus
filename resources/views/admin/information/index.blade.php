@@ -15,7 +15,15 @@
                     STUDENT BUS REQUIREMENT INFORMATION
                     
                 </h2>
-
+                @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
             </div>
             <div class="body">
                 <div class="row clearfix">
@@ -24,7 +32,7 @@
                         <select class="form-control" name="from">
                             @if(count($timeslot)>0)
                                 @foreach ($timeslot as $slot)
-                        <option value="{{$slot['start']}}">{{$slot['start']}}</option>
+                        <option value="{{$slot['start']}}">{{date('h:i a', strtotime($slot['start']))}}</option>
                                 @endforeach
                             @endif
                             
@@ -35,7 +43,7 @@
                         <select class="form-control" name="to">
                             @if(count($timeslot)>0)
                                 @foreach ($timeslot as $slot)
-                        <option value="{{$slot['end']}}">{{$slot['end']}}</option>
+                        <option value="{{$slot['end']}}">{{date('h:i a', strtotime($slot['end']))}}</option>
                                 @endforeach
                             @endif
                             

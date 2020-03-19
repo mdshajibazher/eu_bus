@@ -51,13 +51,13 @@
                             @endif
                         @else
                         <li class="nav-item">
-                        <a class="nav-link" href="{{route('information.index')}}">Update Information</a> 
+                        <a class="nav-link" href="{{route('information.index')}}">Class Information</a> 
                      </li>
                      <li class="nav-item">
                         <a class="nav-link" href="{{route('home')}}">Seat Reservation</a> 
                      </li>
                             <li class="nav-item">
-                                   <a class="nav-link" href="">{{ Auth::user()->name }}</a> 
+                                   <a class="nav-link" href="">My Profile</a> 
                             </li>
                             <li class="nav-item">
                             <form id="logout-form" action="{{ route('logout') }}" method="POST">
