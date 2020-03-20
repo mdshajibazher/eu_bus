@@ -11,41 +11,60 @@
             <div class="card">
                 <div class="card-header text-uppercase">Semesterwise Class Schedule Information</div>
                 <div class="card-body">
-                    <h4 class="mb-3">{{Auth::user()->name}}'s Class Schedule</h4>
-                    <a href="#" class="btn btn-info btn-sm"><i class="fa fa-plus">Add New</i></a>
-                    <form>
-                        <div class="form-group">
-                          <label for="exampleFormControlInput1">Email address</label>
-                          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-                        </div>
-                        <div class="form-group">
-                          <label for="class_start">Class Start</label>
-                          <select class="form-control" id="class_start" name="class_start">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                          </select>
-                        </div>
+                     <!-- <h4 class="mb-3">{{Auth::user()->name}}'s Class Schedule</h4> -->
+                    <!-- <a href="#" class="btn btn-info btn-sm"><i class="fa fa-plus">Add New</i></a> -->
+                    <span>Check How Many Days Of Your Class In This Semester</span> <br><br>
+                <form action="{{route('information.store')}}" method="POST">
+                      @csrf
 
-                        <div class="form-group">
-                          <label for="class_end">Class End</label>
-                          <select class="form-control" id="class_end" name="class_end">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                          </select>
-                        </div>
-                        <div class="form-group">
-                          <label for="exampleFormControlTextarea1">Example textarea</label>
-                          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                        </div>
-                      </form>
-                   
                     
+                    <div class="form-group">
+                      <div class="icheck-primary">
+                        <input type="checkbox" id="saturday" name="day[]" value="saturday"/>
+                        <label for="saturday">Saturday</label>
+                    </div>
+
+                    </div>
+                    <div class="form-group">
+                      <div class="icheck-primary">
+                        <input type="checkbox" id="sunday" name="day[]" value="sunday"/>
+                        <label for="sunday">Sunday</label>
+                    </div>
+
+                    </div>
+                    <div class="form-group">
+                      <div class="icheck-primary">
+                        <input type="checkbox" id="monday" name="day[]" value="monday"/>
+                        <label for="monday">Monday</label>
+                    </div>
+
+                    </div>
+                    <div class="form-group">
+                      <div class="icheck-primary">
+                        <input type="checkbox" id="tuesday" name="day[]" value="tuesday"/>
+                        <label for="tuesday">Tuesday</label>
+                    </div>
+
+                    </div>
+                    <div class="form-group">
+                      <div class="icheck-primary">
+                        <input type="checkbox" id="wednesday" name="day[]" value="wednesday"/>
+                        <label for="wednesday">Wednesday</label>
+                    </div>
+
+                    </div>
+                    <div class="form-group">
+                      <div class="icheck-primary">
+                        <input type="checkbox" id="friday" name="day[]" value="friday"/>
+                        <label for="friday">Friday</label>
+                    </div>
+
+                    </div>
+                   
+                   <div class="form-group">
+                     <button type="submit" class="btn btn-success">Submit</button>
+                   </div>
+                  </form>
                 </div>
             </div>
         </div>
@@ -56,11 +75,10 @@
 </div>
 @endsection
 @push('css')
-<link rel="stylesheet" href="{{asset('public/asset/css/seat_reservation.css')}}">
-<link rel="stylesheet" href="{{asset('public/asset/css/flatpicker.css')}}">
+<link rel="stylesheet" href="{{asset('public/css/icheck-bootstrap.min.css')}}">
 @endpush
 @push('customjs')
-<script src="{{asset('public/asset/js/flatpicker.min.js')}}"></script>
+
 <script>
 $(document).ready(function() {
 //Selct 2

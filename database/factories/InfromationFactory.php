@@ -17,8 +17,8 @@ $factory->define(Information::class, function (Faker $faker) {
     return [
         'student' => $number++,
         'current_session' => 'spring2020',
-        'class_start' => '10:40',
+        'class_start' => '09:00',
         'class_end' => $end_slot[rand(0,6)],
-        'day' => $day[2],
+        'day' => $day[5],
     ];
 });

@@ -67,7 +67,16 @@
                                 </i>
                                     <span>Buses</span>
                             </a>
-                        </li>
+                    </li>
+
+                    <li class="{{Request::is('admin/currentsession*') ? 'active' : '' }}">
+                        <a  href="{{route('currentsession.index')}}">
+                            <i class="material-icons">
+                                verified_user
+                                </i>
+                                    <span>Session</span>
+                            </a>
+                    </li>
                     <li class="{{Request::is('admin/busroute*') ? 'active' : '' }}">
                     <a class="menu-toggle" href="javascript:void(0);">
                         <i class="material-icons">room</i>

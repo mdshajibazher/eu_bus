@@ -99,7 +99,7 @@
                                 <th>Area</th>
                                 <th>Session</th>
                                 <th>Class Start</th>
-                                <th>Class Start</th>
+                                <th>Class End</th>
                                 <th>Day</th>
                             </tr>
                         </thead>
@@ -110,7 +110,7 @@
                                 <th>Area</th>
                                 <th>Session</th>
                                 <th>Class Start</th>
-                                <th>Class Start</th>
+                                <th>Class End</th>
                                 <th>Day</th>
                             </tr>
                         </tfoot>

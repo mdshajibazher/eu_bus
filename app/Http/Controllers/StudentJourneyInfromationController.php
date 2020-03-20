@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Information;
+use App\Currentsession;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -16,7 +17,8 @@ class StudentJourneyInfromationController extends Controller
      */
     public function index()
     {
-        $existing_inf = Information::all()->where('student',Auth::user()->id);
+        $current_session = Currentsession::all()->where('status',1)->first();
+        $existing_inf = Information::all()->where('student',Auth::user()->id)->where('current_session',$current_session->session_slug);
         return view('students.information.index',compact('existing_inf'));
     }
 
@@ -38,7 +40,7 @@ class StudentJourneyInfromationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $request;
     }
 
     /**

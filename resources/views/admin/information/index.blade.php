@@ -67,7 +67,7 @@
                         <label for="">Session</label>
                         <select class="form-control" name="current_session">
                             
-                        <option value="spring2020">Spring 2020</option>
+                        <option value="{{$current_session->session_slug}}">{{$current_session->session_name.' '.$current_session->year}}</option>
                         
                         </select>
                     </div>

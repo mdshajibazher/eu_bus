@@ -36,6 +36,7 @@ Route::group(['prefix'=> 'admin','middleware' => ['auth:admin']], function(){
     Route::resource('students', 'StudentsController');
     Route::resource('timeslot', 'TimeSlotController');
     Route::resource('studentbus', 'BusesController');
+    Route::resource('currentsession', 'CurrentsessionController');
     Route::get('busroute/{busroute}/edit', 'AreaAssignController@edit')->name('busroute.edit');
     Route::put('busroute/{busroute}', 'AreaAssignController@update')->name('busroute.update');
     Route::get('bus/{routeid}/edit', 'BusAssignController@edit')->name('bus.edit');
