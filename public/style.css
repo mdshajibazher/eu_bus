@@ -32,6 +32,19 @@ user-select: none;
 	display: none;
 }
 
+[class*="icheck-"] > input:first-child:disabled + input[type="hidden"] + label, [class*="icheck-"] > input:first-child:disabled + input[type="hidden"] + label::before, [class*="icheck-"] > input:first-child:disabled + label, [class*="icheck-"] > input:first-child:disabled + label::before{
+  color: red;
+  text-decoration: line-through;
+}
+.info-form-heading{
+  margin: 20px 0;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: #eb4d4b;
+  color: #fff;
+}
 /* Create a custom radio button */
 .radiobtn{
   position: absolute;

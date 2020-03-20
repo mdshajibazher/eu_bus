@@ -11,7 +11,11 @@
             <div class="card">
                 <div class="card-header text-uppercase">Semesterwise Class Schedule Information</div>
                 <div class="card-body">
-                    <h4 class="mb-3">{{Auth::user()->name}}'s Class Schedule</h4>
+                @if(Session::has('message'))
+                    <p class="alert alert-success">{{ Session::get('message') }}</p>
+                @endif
+                    <p class="mb-3">{{Auth::user()->name}}'s Class Schedule</p>
+
                 <a href="{{route('information.create')}}" class="btn btn-info btn-sm"><i class="fa fa-plus">Add New</i></a>
                     <table class="table table-dark table-hover mt-3">
                         <thead>

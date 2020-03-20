@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Session;
+use App\TimeSlot;
 use App\Information;
 use App\Currentsession;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\DayValidateRequest;
 
 class StudentJourneyInfromationController extends Controller
 {
@@ -29,7 +32,10 @@ class StudentJourneyInfromationController extends Controller
      */
     public function create()
     {
-        return view('students.information.create');
+        $timeslot = TimeSlot::all();
+        $current_session = Currentsession::all()->where('status',1)->first();
+        $info =   DB::table('information')->select('day')->where('student',Auth::user()->id)->get();
+        return view('students.information.create',compact('info','timeslot','current_session'));
     }
 
     /**
@@ -38,9 +44,15 @@ class StudentJourneyInfromationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DayValidateRequest $request)
     {
-        return $request;
+        $dayList = collect($request->day);
+        if($request->has('day')){
+            Session::put('dayName',$dayList);
+            return redirect()->back();
+        }else{
+            return $request;
+        }
     }
 
     /**
@@ -62,7 +74,7 @@ class StudentJourneyInfromationController extends Controller
      */
     public function edit($id)
     {
-        //
+        return "This page is under constructing (hit back button on your browser)";
     }
 
     /**
