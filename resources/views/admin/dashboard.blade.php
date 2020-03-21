@@ -11,7 +11,16 @@
                     INFORMATION AT A GLANCE
                 </h2>
                 <div class="row">
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="info-box-4 hover-expand-effect">
+                            <div class="icon">
+                                <i class="material-icons col-black">date_range</i>
+                            </div>
+                            <div class="content">
+                                <div class="text">Date</div>
+                            <div class="number count-to" data-from="0" data-to="257" data-speed="1000" data-fresh-interval="20">{{now()->toDateString()}} ( {{$day}} )</div>
+                            </div>
+                        </div>
                         <div class="info-box hover-expand-effect">
                             <div class="icon bg-pink">
                                 <i class="material-icons">
@@ -19,58 +28,14 @@
                                     </i>
                             </div>
                             <div class="content">
-                                <div class="text">FROM</div>
-                                <div class="number">{{ date('h:i a', strtotime($from)) }}</div>
+                                <div class="text">Time Range</div>
+                                <div class="number">{{ date('h:i a', strtotime($from)) }} To {{date('h:i a', strtotime($to))}}</div>
                             </div>
                         </div>
-                        <div class="info-box hover-expand-effect">
-                            <div class="icon bg-light-green">
-                                <i class="material-icons">
-                                    access_alarm
-                                    </i>
-                            </div>
-                            <div class="content">
-                                <div class="text">To</div>
-                            <div class="number">{{date('h:i a', strtotime($to))}}</div>
-                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        
-                        <div class="info-box-4 hover-expand-effect">
-                            <div class="icon">
-                                <i class="material-icons col-black">date_range</i>
-                            </div>
-                            <div class="content">
-                                <div class="text">Date</div>
-                            <div class="number count-to" data-from="0" data-to="257" data-speed="1000" data-fresh-interval="20">{{now()->toDateString()}}</div>
-                            </div>
-                        </div>
-                        
-                        <div class="info-box-4">
-                            <a class="btn btn-link" href="{{route('information.request')}}">
-                            <div class="icon">
-                                <i class="material-icons col-indigo">link</i>
-                            </div>
-                            <div class="content">
-                                
-                            <div class="">More Details</div>
-                            </div>
-                        </a>
-                        </div>
+
                     
-                       
-                    </div>
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div class="info-box-4 hover-expand-effect">
-                            <div class="icon">
-                                <i class="material-icons col-indigo">access_time</i>
-                            </div>
-                            <div class="content">
-                                <div class="text">DAY</div>
-                            <div class="number">{{$day}}</div>
-                            </div>
-                        </div>
                         <div class="info-box-4 hover-expand-effect">
                             <div class="icon">
                                 <i class="material-icons col-orange">face</i>
@@ -87,7 +52,18 @@
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                         <div class="info-box-4 hover-expand-effect">
                             <div class="icon">
-                                <i class="material-icons col-black">
+                                <i class="material-icons col-cyan">eco</i>
+                            </div>
+                            <div class="content">
+                                <div class="text">Session</div>
+                            <div class="number">{{$current_session}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box-4 hover-expand-effect">
+                            <div class="icon">
+                                <i class="material-icons col-light-green">
                                     directions_bus
                                     </i>
                             </div>
@@ -96,15 +72,25 @@
                             <div class="number">{{ceil(count($inf)/40)}}</div>
                             </div>
                         </div>
-                        <div class="info-box-4 hover-expand-effect">
+                        
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        
+                        
+                        
+                        <div class="info-box-4">
+                            <a class="btn btn-link" href="{{route('information.request')}}">
                             <div class="icon">
-                                <i class="material-icons col-cyan">eco</i>
+                                <i class="material-icons col-indigo">link</i>
                             </div>
                             <div class="content">
-                                <div class="text">Session</div>
-                            <div class="number">{{$current_session}}</div>
+                                
+                            <div class="">Change Time Range</div>
                             </div>
+                        </a>
                         </div>
+                    
+                       
                     </div>
 
             </div>
