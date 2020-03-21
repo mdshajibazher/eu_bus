@@ -73,8 +73,12 @@ class StudentJourneyInfromationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
+    
     {
-        return "This page is under constructing (hit back button on your browser)";
+        $class_info = DB::table('information')->where('id',$id)->first();
+        $timeslot = TimeSlot::all();
+        $current_session = Currentsession::all()->where('status',1)->first();
+        return view('students.information.edit',compact('timeslot','current_session','class_info','id'));
     }
 
     /**
@@ -86,7 +90,11 @@ class StudentJourneyInfromationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $class_start = $request['class_start'];
+        $class_end = $request['class_end'];
+        DB::table('information')->where('id', $id)->update(['class_start' => $class_start, 'class_end' => $class_end]);
+        Session::flash('message', 'Information Updated successfully!');
+        return redirect(route('information.index'));
     }
 
     /**
@@ -97,6 +105,9 @@ class StudentJourneyInfromationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $info = Information::find($id);
+        $info->delete();
+        Session::flash('message', 'Information Deleted successfully!');
+        return redirect()->back();
     }
 }

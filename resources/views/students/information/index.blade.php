@@ -7,7 +7,7 @@
 @endif
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-9">
             <div class="card">
                 <div class="card-header text-uppercase">Semesterwise Class Schedule Information</div>
                 <div class="card-body">
@@ -52,7 +52,12 @@
                             </td>
 
                             <td>{{$inf['current_session']}}</td>
-                        <td><a href="{{route('information.edit',$inf['id'])}}" class="btn btn-success"><i class="fa fa-pencil-square-o"></i>
+                        <td><a href="{{route('information.edit',$inf['id'])}}" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o"></i>
+                            </a> | <form style="display: inline-block" action="{{route('information.destroy',$inf['id'])}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button  type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
+                            </form>
                             </a></td>
                           </tr>
                         @endforeach
