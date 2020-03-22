@@ -2,6 +2,7 @@
 @extends('layouts.app')
 @push('css')
   <link rel="stylesheet" href="{{asset('public/asset/css/login.css')}}">
+  <link rel="stylesheet" href="{{asset('public/css/icheck-bootstrap.min.css')}}">
 @endpush
 @section('content')
 <div class="col-lg-4 offset-lg-4">
@@ -51,7 +52,7 @@
         </div>
         <div class="row">
           <div class="col-8">
-            <div class="icheck-primary">
+            <div class="icheck-success">
               <input type="checkbox" id="remember" name="remember">
               <label for="remember">
                 Remember Me

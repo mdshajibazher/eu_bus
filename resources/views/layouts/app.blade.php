@@ -59,9 +59,7 @@
                      <li class="nav-item">
                         <a class="nav-link" href="{{route('home')}}">Seat Reservation</a> 
                      </li>
-                            <li class="nav-item">
-                                   <a class="nav-link" href="">My Profile</a> 
-                            </li>
+        
                             <li class="nav-item">
                             <form id="logout-form" action="{{ route('logout') }}" method="POST">
                                 @csrf

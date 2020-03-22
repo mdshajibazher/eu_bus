@@ -11,7 +11,8 @@
         <div class="card">
             <div class="header">
                 <h2 class="text-center">
-                    SELCT  JOURNEY DATE USING DATEPICKER
+                    SELCT  JOURNEY DATE USING DATEPICKER <span class="badge bg-red text-center">DUMMY DATA FOUND ON 22-03-2020</span>
+                   
                 </h2>
             </div>
             <div class="body">

@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(BusesTableSeeder::class);
         $this->call(UserFactorySeeder::class);
         $this->call(TimeSlotSeeder::class);
-        $this->call(userTableSeeder::class);
+        $this->call(CurrentSessionSeeder::class);
+        
     }
 }
