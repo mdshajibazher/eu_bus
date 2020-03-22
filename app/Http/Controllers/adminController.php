@@ -24,54 +24,53 @@ class adminController extends Controller
         $current_session = $sessionrow->session_slug;
 
 
+
+    $timeslot = TimeSlot::all();
+    foreach ($timeslot as $key => $slot) {
+         $starting_time[] = $slot->start;
+         $ending_time[] = $slot->end;
+    }
+
+
+
     $time_array = [
-        ['09:00','10:30'],
-        ['09:00','11:50'],
-        ['09:00','13:20'],
-        ['09:00','15:40'],
-        ['09:00','17:10'],
-        ['09:00','18:30'],
-        ['09:00','19:40'],
+        [$starting_time[0],$ending_time[0]],
+        [$starting_time[0],$ending_time[1]],
+        [$starting_time[0],$ending_time[2]],
+        [$starting_time[0],$ending_time[3]],
+        [$starting_time[0],$ending_time[4]],
+        [$starting_time[0],$ending_time[5]],
+        [$starting_time[0],$ending_time[6]],
 
-        ['10:40','11:50'],
-        ['10:40','13:20'],
-        ['10:40','15:40'],
-        ['10:40','17:10'],
-        ['10:40','18:30'],
-        ['10:40','19:40'],
+        [$starting_time[1],$ending_time[1]],
+        [$starting_time[1],$ending_time[2]],
+        [$starting_time[1],$ending_time[3]],
+        [$starting_time[1],$ending_time[4]],
+        [$starting_time[1],$ending_time[5]],
+        [$starting_time[1],$ending_time[6]],
 
+        [$starting_time[2],$ending_time[2]],
+        [$starting_time[2],$ending_time[3]],
+        [$starting_time[2],$ending_time[4]],
+        [$starting_time[2],$ending_time[5]],
+        [$starting_time[2],$ending_time[6]],
 
-        ['00:00','13:20'],
-        ['00:00','15:40'],
-        ['00:00','17:10'],
-        ['00:00','18:30'],
-        ['00:00','19:40'],
+        [$starting_time[3],$ending_time[3]],
+        [$starting_time[3],$ending_time[4]],
+        [$starting_time[3],$ending_time[5]],
+        [$starting_time[3],$ending_time[6]],
 
+        [$starting_time[4],$ending_time[4]],
+        [$starting_time[4],$ending_time[5]],
+        [$starting_time[4],$ending_time[6]],
 
-        ['14:30','15:40'],
-        ['14:30','17:10'],
-        ['14:30','18:30'],
-        ['14:30','19:40'],
+        [$starting_time[5],$ending_time[5]],
+        [$starting_time[5],$ending_time[6]],
 
-
-        ['15:50','17:10'],
-        ['15:50','18:30'],
-        ['15:50','19:40'],
-
-        ['17:20','18:30'],
-        ['17:20','19:40'],
-
-        ['18:40','19:40'],
+        [$starting_time[6],$ending_time[6]],
     ];
 
 
-    
-
-    // $timeslot = TimeSlot::all();
-    // foreach ($timeslot as $key => $slot) {
-    //         $starting_time[] = $slot->start;
-    //         $ending_time[] = $slot->end;
-    // }
 
 
 
@@ -84,17 +83,8 @@ class adminController extends Controller
         $info[] = DB::table('information')->join('users', 'information.student', '=', 'users.id')->select('information.*','users.name', 'users.address', 'users.area')->where('class_start',$from[$i])->where('class_end', $to[$i])->where('day', $day)->where('current_session',$current_session)->get();
     }
 
-
-
-    // $timeslot = TimeSlot::all();
-    // foreach($timeslot as $key => $slot){
-    //     $from[] = $slot['start'];
-
-    //     $to[] = $slot['end'];
-    //     $info[] = DB::table('information')->join('users', 'information.student', '=', 'users.id')->select('information.*','users.name', 'users.address', 'users.area')->whereBetween('class_start', [$slot['start'], $slot['end']])->whereBetween('class_end', [$slot['start'], $slot['end']])->where('day', $day)->where('current_session',$current_session)->get();
-    // }
         
-        return view('admin.dashboard', compact('info', 'from', 'to', 'day', 'current_session'));
+    return view('admin.dashboard', compact('info', 'from', 'to', 'day', 'current_session'));
 
     }
 
