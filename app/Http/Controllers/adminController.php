@@ -32,49 +32,15 @@ class adminController extends Controller
     }
 
 
-
-    $time_array = [
-        [$starting_time[0],$ending_time[0]],
-        [$starting_time[0],$ending_time[1]],
-        [$starting_time[0],$ending_time[2]],
-        [$starting_time[0],$ending_time[3]],
-        [$starting_time[0],$ending_time[4]],
-        [$starting_time[0],$ending_time[5]],
-        [$starting_time[0],$ending_time[6]],
-
-        [$starting_time[1],$ending_time[1]],
-        [$starting_time[1],$ending_time[2]],
-        [$starting_time[1],$ending_time[3]],
-        [$starting_time[1],$ending_time[4]],
-        [$starting_time[1],$ending_time[5]],
-        [$starting_time[1],$ending_time[6]],
-
-        [$starting_time[2],$ending_time[2]],
-        [$starting_time[2],$ending_time[3]],
-        [$starting_time[2],$ending_time[4]],
-        [$starting_time[2],$ending_time[5]],
-        [$starting_time[2],$ending_time[6]],
-
-        [$starting_time[3],$ending_time[3]],
-        [$starting_time[3],$ending_time[4]],
-        [$starting_time[3],$ending_time[5]],
-        [$starting_time[3],$ending_time[6]],
-
-        [$starting_time[4],$ending_time[4]],
-        [$starting_time[4],$ending_time[5]],
-        [$starting_time[4],$ending_time[6]],
-
-        [$starting_time[5],$ending_time[5]],
-        [$starting_time[5],$ending_time[6]],
-
-        [$starting_time[6],$ending_time[6]],
-    ];
-
-
-
-
-
-
+    for($n=0;$n<count($starting_time);$n++){
+    for($k=0;$k<count($ending_time);$k++){
+        if($k<$n){
+             
+        }else{
+             $time_array[] =  [$starting_time[$n],$ending_time[$k]];
+        }
+    }
+  }
 
 
     for($i=0;$i<=count($time_array)-1; $i++){
@@ -84,7 +50,7 @@ class adminController extends Controller
     }
 
         
-    return view('admin.dashboard', compact('info', 'from', 'to', 'day', 'current_session'));
+    return view('admin.dashboard', compact('info', 'from', 'to', 'day', 'current_session','time_array'));
 
     }
 

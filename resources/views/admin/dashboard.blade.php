@@ -7,19 +7,20 @@
 @endphp
 <!-- Exportable Table -->
 
-
 <div class="row clearfix">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      
+    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
         
         
             
         <div class="card">
             <div class="header">
                 <h2 style="margin-bottom: 20px">
-                    INFORMATION AT A GLANCE
+                    INFORMATION AT A GLANCE -- <a href="{{route('information.request')}}" class="btn btn-info btn-sm">More Time Range</a>
                 </h2>
+                
                                 <div class="row">
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                         <div class="info-box-4 hover-expand-effect">
                             <div class="icon">
                                 <i class="material-icons col-black">date_range</i>
@@ -33,7 +34,7 @@
                         </div>
 
                     
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                         <div class="info-box-4 hover-expand-effect">
                             <div class="icon">
                                 <i class="material-icons col-cyan">eco</i>
@@ -45,7 +46,7 @@
                         </div>
                     </div>
                     
-                                             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                             <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box-4 hover-expand-effect">
                             <div class="icon">
                                 <i class="material-icons col-red">date_range</i>
@@ -58,13 +59,7 @@
                     </div>
                         
                   
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        
-                        <a href="{{route('information.request')}}" class="btn btn-info btn-block btn-lg">Change Time Range</a>
-                        
-                    
-                       
-                    </div>
+        
 
                     
 
@@ -84,7 +79,7 @@
             <div class="header">
 
                 <h2>
-                    DETAILED INFORMATION
+                    DETAILED INFORMATION FROM  {{ date('h:i a', strtotime($from[$key])) }} To {{date('h:i a', strtotime($to[$key]))}}
                 </h2>
 
                     
@@ -92,7 +87,7 @@
             </div>
             <div class="body">
                 <div class="row">
-                       <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                       <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
                     <div class="info-box hover-expand-effect">
                             <div class="icon bg-{{$colors[$key]}}">
                                 <i class="material-icons">
@@ -115,18 +110,18 @@
                             </div>
                             @php $busNeeded = ceil(count($inf)/40);  @endphp
                             <div class="content">
-                                <div class="text">NEEDED</div>
+                                <div class="text">BUS</div>
                             <div class="number count-to" data-from="0" data-to="{{$busNeeded}}" data-speed="1000">{{$busNeeded}}</div>
                             </div>
                         </div>
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
                     <div class="info-box-4 hover-expand-effect">
                             <div class="icon">
                                 <i class="material-icons col-{{$colors[$key]}}">face</i>
                             </div>
                             <div class="content">
-                                <div class="text">TOTAL STUDENTS</div>
+                                <div class="text">STUDENTS</div>
                             <div class="number count-to" data-from="0" data-to="{{count($inf)}}" data-speed="1000" data-fresh-interval="20">{{count($inf)}}</div>
                             </div>
                         </div>
@@ -228,6 +223,27 @@
             </div>
         </div>
         
+    </div>
+
+    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+        <div class="card text-center">
+            <div class="header">
+                <h2>Total {{count($time_array)}} Time Combination Found </h2> <br>
+                
+                <table class="table table-bordered table-striped table-hover text-center">
+                     @foreach($time_array as $timeSchedule)
+                    <tr>
+                        <td>
+               
+               
+
+                   {{date('h:i', strtotime($timeSchedule[0]))}} To {{date('h:i', strtotime($timeSchedule[1]))}} 
+                    </td>
+                    </tr>
+                    @endforeach
+                </table>
+            </div>
+        </div>
     </div>
 </div>
 <!-- #END# Exportable Table -->
