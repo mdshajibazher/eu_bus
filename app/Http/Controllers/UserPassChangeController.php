@@ -33,7 +33,8 @@ class UserPassChangeController extends Controller
         $user->password = Hash::make($request['password']);
         $user->update();
         Session::flash('success','Password changed successfully !');
-        return redirect()->back();
+        Auth::logout();
+        return redirect(route('login'));
 
 
     }
