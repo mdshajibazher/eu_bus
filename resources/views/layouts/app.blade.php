@@ -19,15 +19,16 @@
     <!-- Bootstrap -->
     <link href="{{asset('public/css/bootstrap.min.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('public/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/css/responsive.css') }}">
 </head>
 <body class="{{Auth::check() ? 'logged_in' : ''}}">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-white">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -89,7 +90,7 @@
     <!-- Jquery -->
     <script src="{{asset('public/asset/plugins/jquery/jquery.js')}}"></script>
     <!-- Bootstrap js-->
-    <script src="{{asset('public/asset/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('public/js/bootstrap.min.js')}}"></script>
     <!--Popper Js-->
     <script src="{{asset('public/js/popper.js')}}"></script>
     <!--Select 2 -->

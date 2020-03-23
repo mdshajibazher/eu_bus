@@ -177,7 +177,6 @@ $(document).ready(function() {
 //Selct 2
 // $('#bus').select2();
 // Tooltip
-$('[data-toggle="tooltip"]').tooltip();
 // Rdirect To bus reservation page
 
 $('#bus').change(function(){ 

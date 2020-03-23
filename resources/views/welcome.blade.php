@@ -7,6 +7,7 @@
         <title>Laravel</title>
         
         <link rel="stylesheet" href="{{asset('public/css/welcome.css')}}">
+        <link rel="stylesheet" href="{{asset('public/css/responsive.css')}}">
     </head>
     <body >
             @if (Route::has('login'))
@@ -27,7 +28,7 @@
         <div id="particles-js">
             <div class="wrapper">
         <div class="flex-center full-height">
-            <div class="content">
+            <div class="content welcome-content">
                  <img src="{{asset('public/image/logo.png')}}" alt="">
                 <div class="title m-b-md">
                     EU BUS MANAGEMENT

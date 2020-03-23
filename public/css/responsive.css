@@ -1,0 +1,46 @@
+/*Custom Layout*/
+@media only screen and (min-width: 992px) and (max-width: 1199px){
+
+
+
+}
+
+/* Tablet Layout: 768px. */
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+
+	
+}
+
+
+/* Mobile Layout: 320px. */
+
+@media only screen and (max-width: 767px) {
+	.main-menu > li.nav-item > a, .main-menu > li.nav-item > form a{
+		text-align: center;
+		border-radius: 5px;
+	}
+	.title{
+		font-size: 29px;
+	}
+	.welcome-content img{
+		width: 70%;
+		height: auto;
+	}
+	.top-right.links a{
+		padding: 5px;
+		font-size: 12px;
+		letter-spacing: 0px;
+	}
+}
+
+
+/* Wide Mobile Layout: 480px. */
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+	
+
+
+
+}

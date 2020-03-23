@@ -118,7 +118,7 @@
                             </div>
                             <div class="content">
                                 <div class="text">STUDENTS RANGE</div>
-                            <div class="number count-to" data-from="0" data-to="{{count($inf)}}" data-speed="1000" data-fresh-interval="20">{{count($inf)}}</div>
+                            <div class="number count-to" data-from="0" data-to="{{count($inf)}}" data-speed="2500" data-fresh-interval="20">{{count($inf)}}</div>
                             </div>
                         </div>
                 </div>
@@ -141,7 +141,7 @@
                         </div>
                         <div class="content">
                             <div class="text">Wasted Seat</div>
-                            <div class="number count-to" data-from="0" data-to="@if(count($inf) >= 40*$busNeeded) 0 @else {{(40*$busNeeded)-count($inf)}}  @endif" data-speed="1000">@if(count($inf) >= 40*$busNeeded) 0 @else {{(40*$busNeeded)-count($inf)}}  @endif </div>
+                            <div class="number count-to" data-from="0" data-to="@if(count($inf) >= 40*$busNeeded) 0 @else {{(40*$busNeeded)-count($inf)}}  @endif" data-speed="2500">@if(count($inf) >= 40*$busNeeded) 0 @else {{(40*$busNeeded)-count($inf)}}  @endif </div>
                         </div>
                     </div>
                 </div>
@@ -214,6 +214,29 @@
             'copy', 'csv', 'excel', 'pdf', 'print'
         ]
     });
+
+    //Smooth Scroll
+    $('a[href*="#"]:not([href="#"])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        return false;
+      }
+    }
+  });
+});
+
+
+$(window).scroll(function(){
+  if($(this).scrollTop() > 100){
+    $('.scroll').fadeIn();
+  } else{
+    $('.scroll').fadeOut();
+  }
 });
 
 

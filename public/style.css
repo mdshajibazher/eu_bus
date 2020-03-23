@@ -157,11 +157,11 @@ display: none;
   font-weight: bold;
 }
 .main-menu > li.nav-item >  a:hover, .main-menu > li.nav-item > form a:hover{
-  background: #fff;
+  background: #dddddd;
   color: #303952 !important; 
 }
 .main-menu > li.nav-item >  a.active, .main-menu > li.nav-item > form a.active{
-  background: #fff;
+  background: #dddddd;
   color: #303952 !important;
 }
 
