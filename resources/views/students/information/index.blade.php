@@ -17,7 +17,7 @@
                     <p class="mb-3">{{Auth::user()->name}}'s Class Schedule</p>
 
                 <a href="{{route('information.create')}}" class="btn btn-info btn-sm"><i class="fa fa-plus">Add New</i></a>
-                    <table class="table table-dark table-hover mt-3">
+                    <table class="table table-bordered table-striped table-hover mt-3">
                         <thead>
                           <tr>
                             <th scope="col">#</th>

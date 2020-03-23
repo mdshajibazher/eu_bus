@@ -46,7 +46,9 @@ class adminController extends Controller
     for($i=0;$i<=count($time_array)-1; $i++){
         $from[] = $time_array[$i][0];
         $to[] = $time_array[$i][1];
-        $info[] = DB::table('information')->join('users', 'information.student', '=', 'users.id')->select('information.*','users.name', 'users.address', 'users.area')->where('class_start',$from[$i])->where('class_end', $to[$i])->where('day', $day)->where('current_session',$current_session)->get();
+        $info[] = DB::table('information')->whereBetween('class_start', [$from[$i], $to[$i]])->whereBetween('class_end', [$from[$i], $to[$i]])->where('day', $day)->where('current_session',$current_session)->get();
+
+        //DB::table('information')->join('users', 'information.student', '=', 'users.id')->select('information.*','users.name', 'users.address', 'users.area')->whereBetween('class_start', [$from, $to])->whereBetween('class_end', [$from, $to])->where('day', $day)->where('current_session',$current_session)->get();
     }
 
         

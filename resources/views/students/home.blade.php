@@ -79,20 +79,20 @@
             <div class="card">
                 <div class="card-header">Booking</div>
                 <div class="card-body">
-                    @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul class="list-group">
-                            @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                    @endif
+                   
                     
                     <form action="" method="post">
                         @csrf
                         <div class="row">
-                            
+                            @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul class="list-group">
+                                    @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            @endif
                             <div class="col-md-6">
                                 @if(Session::has('success'))
                                     <div class="alert alert-success">

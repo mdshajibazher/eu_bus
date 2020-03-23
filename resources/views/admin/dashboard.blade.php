@@ -9,17 +9,17 @@
 
 <div class="row clearfix">
       
-    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+    <div class="col-lg-9 col-md-10 col-sm-12 col-xs-12">
         
         
             
         <div class="card">
             <div class="header">
                 <h2 style="margin-bottom: 20px">
-                    INFORMATION AT A GLANCE -- <a href="{{route('information.request')}}" class="btn btn-info btn-sm">More Time Range</a>
+                    INFORMATION AT A GLANCE -- <a href="{{route('information.request')}}" class="btn btn-link btn-sm">Custom Time Combination</a>
                 </h2>
                 
-                                <div class="row">
+                <div class="row">
                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                         <div class="info-box-4 hover-expand-effect">
                             <div class="icon">
@@ -49,7 +49,7 @@
                                              <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box-4 hover-expand-effect">
                             <div class="icon">
-                                <i class="material-icons col-red">date_range</i>
+                                <i class="material-icons col-light-green">date_range</i>
                             </div>
                             <div class="content">
                                 <div class="text">Day</div>
@@ -67,15 +67,11 @@
             </div>
         </div>
 
-        @php
-        $studentsum = 0;
-        @endphp
+  
 
         @foreach($info as $key =>  $inf)
-        @php
-        $studentsum += count($inf);
-         @endphp
-        <div class="card">
+  
+        <div class="card" id="{{$key+1}}">
             <div class="header">
 
                 <h2>
@@ -87,7 +83,7 @@
             </div>
             <div class="body">
                 <div class="row">
-                       <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
+                <div class="col-lg-7 col-md-6 col-sm-6 col-xs-12">
                     <div class="info-box hover-expand-effect">
                             <div class="icon bg-{{$colors[$key]}}">
                                 <i class="material-icons">
@@ -101,7 +97,7 @@
                         </div>
                 </div>
  
-                <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
                         <div class="info-box-4 hover-expand-effect">
                             <div class="icon">
                                 <i class="material-icons col-{{$colors[$key]}}">
@@ -110,26 +106,38 @@
                             </div>
                             @php $busNeeded = ceil(count($inf)/40);  @endphp
                             <div class="content">
-                                <div class="text">BUS</div>
+                                <div class="text">BUS NEDED</div>
                             <div class="number count-to" data-from="0" data-to="{{$busNeeded}}" data-speed="1000">{{$busNeeded}}</div>
                             </div>
                         </div>
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                     <div class="info-box-4 hover-expand-effect">
                             <div class="icon">
                                 <i class="material-icons col-{{$colors[$key]}}">face</i>
                             </div>
                             <div class="content">
-                                <div class="text">STUDENTS</div>
+                                <div class="text">STUDENTS RANGE</div>
                             <div class="number count-to" data-from="0" data-to="{{count($inf)}}" data-speed="1000" data-fresh-interval="20">{{count($inf)}}</div>
                             </div>
                         </div>
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box @if(count($inf) >= 40*$busNeeded) bg-green @else bg-{{$colors[$key]}} @endif hover-expand-effect">
+
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <div class="info-box-4 hover-expand-effect">
+                            <div class="icon">
+                                <i class="material-icons col-{{$colors[$key]}}">airline_seat_recline_extra</i>
+                            </div>
+                            <div class="content">
+                                <div class="text">REQUIRED SEAT</div>
+                            <div class="number count-to" data-from="0" data-to="{{count($inf)}}" data-speed="1000" data-fresh-interval="20">{{count($inf)}}</div>
+                            </div>
+                        </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <div class="info-box-4  hover-expand-effect">
                         <div class="icon">
-                            <i class="material-icons">equalizer</i>
+                            <i class="material-icons @if(count($inf) >= 40*$busNeeded) col-green @else col-red @endif">highlight_off</i>
                         </div>
                         <div class="content">
                             <div class="text">Wasted Seat</div>
@@ -140,111 +148,36 @@
       
                 </div>
              
-                <div class="table-responsive">
-                    <table class="table table-bordered table-striped table-hover dataTable js-exportable">
-                        <thead>
-                            <tr>
-                                <th>id</th>
-                                <th>Student</th>
-                                <th>Area</th>
-                                <th>Session</th>
-                                <th>Class Start</th>
-                                <th>Class End</th>
-                                <th>Day</th>
-                            </tr>
-                        </thead>
-                        <tfoot>
-                            <tr>
-                                <th>id</th>
-                                <th>Student</th>
-                                <th>Area</th>
-                                <th>Session</th>
-                                <th>Class Start</th>
-                                <th>Class End</th>
-                                <th>Day</th>
-                            </tr>
-                        </tfoot>
-                        <tbody>
-                            
-                            @if(count($inf) > 0)
-                                @foreach ($inf as $slotinf)
-                                
-                                <tr>
-                                <td>{{$i++}}</td>
-                                    <td>{{$slotinf->name}}</td>
-                                    <td>@php $areaname = DB::table('area')->select('name')->where('id',$slotinf->area)->first(); @endphp
-                                        <span class="badge bg-{{$colors[$key]}}">{{$areaname->name}}</span></td>
-                                    <td>{{$slotinf->current_session}}</td>
-                                    <td>{{date('h:i a', strtotime($slotinf->class_start))}}</td>
-                                    <td>{{date('h:i a', strtotime($slotinf->class_end))}}</td>
-                                    <td>{{$slotinf->day}}</td>
-                                </tr> 
-                                @endforeach
-                            @endif
-                            
-                        </tbody>
-                    </table>
-                </div>
             </div>
         </div>
 
         @endforeach
 
 
-                    
-        <div class="card">
-            <div class="header">
-                <h2 style="margin-bottom: 20px">
-                   Total
-                </h2>
-            <div class="row">
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div class="info-box-4 hover-expand-effect">
-                            <div class="icon">
-                                <i class="material-icons col-yellow">face</i>
-                            </div>
-                            <div class="content">
-                                <div class="text">Total Student</div>
-                            <div class="number count-to" data-from="0" data-to="{{$studentsum}}" data-speed="1000" data-fresh-interval="20">{{$studentsum}}</div>
-                            </div>
-                        </div>
 
-                        </div>
-
-                    
-
-
-                        
- 
-
-                    
-
-            </div>
-            </div>
-        </div>
         
     </div>
 
-    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
         <div class="card text-center">
             <div class="header">
                 <h2>Total {{count($time_array)}} Time Combination Found </h2> <br>
                 
                 <table class="table table-bordered table-striped table-hover text-center">
-                     @foreach($time_array as $timeSchedule)
+                     @foreach($time_array as $key =>  $timeSchedule)
+                    
                     <tr>
+                    <td>{{$key+1}}</td>
                         <td>
-               
-               
-
-                   {{date('h:i', strtotime($timeSchedule[0]))}} To {{date('h:i', strtotime($timeSchedule[1]))}} 
-                    </td>
+                         <a href="#{{$key+1}}">{{date('h:i A', strtotime($timeSchedule[0]))}} To {{date('h:i A', strtotime($timeSchedule[1]))}}</a> 
+                       </td>
                     </tr>
                     @endforeach
                 </table>
             </div>
         </div>
     </div>
+
 </div>
 <!-- #END# Exportable Table -->
 

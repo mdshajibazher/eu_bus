@@ -54,18 +54,24 @@
                             @endif
                         @else
                         <li class="nav-item">
-                        <a class="nav-link" href="{{route('information.index')}}">Class Information</a> 
+                            <a class="nav-link {{ (request()->is('myprofile*')) ? 'active' : '' }}" href="{{route('myprofile.index')}}"><i class="fa fa-user"></i> My Profile</a> 
+                         </li>
+                        <li class="nav-item">
+                        <a class="nav-link {{ (request()->is('information')) ? 'active' : '' }}" href="{{route('information.index')}}"><i class="fa fa-info-circle"></i> Class Information</a> 
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link" href="{{route('home')}}">Seat Reservation</a> 
+                        <a class="nav-link {{ (request()->is('information/create')) ? 'active' : '' }}" href="{{route('information.create')}}"><i class="fa fa-plus"></i> Add New Class</a> 
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link {{ (request()->is('home')) ? 'active' : '' }}" href="{{route('home')}}"><i class="fa fa-bus"></i> Seat Reservation</a> 
                      </li>
         
                             <li class="nav-item">
                             <form id="logout-form" action="{{ route('logout') }}" method="POST">
                                 @csrf
-                                <a class="nav-link" href="{{ route('logout') }}"
+                                <a class="nav-link" href="{{ route('logout') }}" 
                                        onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                                     document.getElementById('logout-form').submit();"> <i class="fa fa-sign-out"></i>
                                         {{ __('Logout') }}
                                 </a>
                             </form>

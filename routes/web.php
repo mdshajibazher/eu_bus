@@ -24,6 +24,9 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('home/seatreserve/{bus}','HomeController@seatupdate')->name('home.seatupdate');
     Route::resource('/information','StudentJourneyInfromationController');
     Route::post('classinfo','ClassInfoSaveController@save')->name('classinfo.save');
+    Route::resource('myprofile', 'myprofileController');
+    Route::get('change', 'UserPassChangeController@form')->name('userpass.change');
+    Route::put('change', 'UserPassChangeController@update')->name('userpass.update');
     
 });
 
