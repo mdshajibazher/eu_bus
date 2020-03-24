@@ -3,7 +3,7 @@
 @section('content')
 <!-- Exportable Table -->
 <div class="row clearfix">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
         <div class="card">
             
             <div class="header">
@@ -11,7 +11,7 @@
                     INFORMATION AT A GLANCE
                 </h2>
                 <div class="row">
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                         <div class="info-box hover-expand-effect">
                             <div class="icon bg-pink">
                                 <i class="material-icons">
@@ -23,6 +23,9 @@
                                 <div class="number">{{ date('h:i a', strtotime($from)) }}</div>
                             </div>
                         </div>
+
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                         <div class="info-box hover-expand-effect">
                             <div class="icon bg-light-green">
                                 <i class="material-icons">
@@ -35,18 +38,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div class="info-box-4 hover-expand-effect">
-                            <div class="icon">
-                                <i class="material-icons col-orange">face</i>
-                            </div>
-                            <div class="content">
-                                <div class="text">TOTAL STUDENTS</div>
-                            <div class="number count-to" data-from="0" data-to="257" data-speed="1000" data-fresh-interval="20">{{count($inf)}}</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                         <div class="info-box-4 hover-expand-effect">
                             <div class="icon">
                                 <i class="material-icons col-indigo">date_range</i>
@@ -58,7 +51,18 @@
                         </div>
                         
                     </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                        <div class="info-box-4 hover-expand-effect">
+                            <div class="icon">
+                                <i class="material-icons col-orange">face</i>
+                            </div>
+                            <div class="content">
+                                <div class="text">TOTAL STUDENTS</div>
+                            <div class="number count-to" data-from="0" data-to="{{count($inf)}}" data-speed="2000" data-fresh-interval="20">{{count($inf)}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                         <div class="info-box-4 hover-expand-effect">
                             <div class="icon">
                                 <i class="material-icons col-black">
@@ -70,6 +74,9 @@
                             <div class="number">{{ceil(count($inf)/40)}}</div>
                             </div>
                         </div>
+                        
+                    </div>
+                    <div class="col-lg-4 col-md-3">
                         <div class="info-box-4 hover-expand-effect">
                             <div class="icon">
                                 <i class="material-icons col-cyan">eco</i>
@@ -80,6 +87,18 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-lg-4 col-md-3">
+                        <div class="info-box-4  hover-expand-effect">
+                            <div class="icon">
+                                <i class="material-icons  col-red ">highlight_off</i>
+                            </div>
+                            <div class="content">
+                                <div class="text">Wasted Seat (40/Seat)</div>
+                                <div class="number count-to" data-from="0" data-to="{{(40*ceil(count($inf)/40))-(count($inf))}}" data-speed="2500">{{(40*ceil(count($inf)/40))-(count($inf))}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    
 
             </div>
                 <h2>
@@ -97,10 +116,10 @@
                                 <th>id</th>
                                 <th>Student</th>
                                 <th>Area</th>
-                                <th>Session</th>
                                 <th>Class Start</th>
                                 <th>Class End</th>
-                                <th>Day</th>
+                                <th>Waiting Time</th>
+     
                             </tr>
                         </thead>
                         <tfoot>
@@ -108,10 +127,10 @@
                                 <th>id</th>
                                 <th>Student</th>
                                 <th>Area</th>
-                                <th>Session</th>
                                 <th>Class Start</th>
                                 <th>Class End</th>
-                                <th>Day</th>
+                                <th>Waiting Time</th>
+              
                             </tr>
                         </tfoot>
                         <tbody>
@@ -123,28 +142,98 @@
                             @endphp
                             @if(count($inf) > 0)
                                 @foreach ($inf as $slotinf)
-                                
+
+                                @php
+                                    $duplicatearray[] = $slotinf->class_end;
+                                @endphp
                                 <tr>
                                 <td>{{$i++}}</td>
                                     <td>{{$slotinf->name}}</td>
                                     <td>@php $areaname = DB::table('area')->select('name')->where('id',$slotinf->area)->first(); @endphp
-                                        <span class="badge bg-{{$colors[rand(1,15)]}}">{{$areaname->name}}</span></td>
-                                    <td>{{$slotinf->current_session}}</td>
+                                        <b>{{$areaname->name}}</b></td>
                                     <td>{{date('h:i a', strtotime($slotinf->class_start))}}</td>
                                     <td>{{date('h:i a', strtotime($slotinf->class_end))}}</td>
-                                    <td>{{$slotinf->day}}</td>
+                                    <td>
+                                        @php
+                                            $format = '%02d Hour %02d Min';
+                                            $waitingTime =    (strtotime($to) - strtotime($slotinf->class_end)) / 60;
+
+                                            if ($waitingTime < 1) {
+                                                echo '<span class="badge bg-light-green">No Waiting</span>';
+                                            }else{
+                                                $hours = floor($waitingTime / 60);
+                                            $minutes = ($waitingTime % 60);
+                                            
+                                            echo '<span class="badge bg-red">'.sprintf($format, $hours, $minutes).'</span>';
+                                            }
+                                            
+
+                                          
+                                        @endphp
+                                    
+                                    </td>
+                        
                                 </tr> 
                                 @endforeach
                             @endif
                             
                         </tbody>
                     </table>
+
                 </div>
             </div>
+            
+
+        </div>
+
+    </div>
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="body">
+        
+            @php
+            $duplicatetime =  array_count_values($duplicatearray);
+            $timeformat = '%02d Hour %02d Min';
+            $number = 1;
+            @endphp
+    
+            @foreach ($duplicatetime as $timevalue => $totalstudent)
+            @php
+            $waitingTime =    (strtotime($to) - strtotime($timevalue)) / 60;
+            @endphp
+    
+                        
+                        
+            @if ($waitingTime < 1) 
+                    @else
+    
+                    @php
+                    $hours = floor($waitingTime / 60);
+                    $minutes = ($waitingTime % 60);
+                    @endphp
+    
+    
+    <table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+    <th scope="col">{{$number++}}</th>
+    <th scope="col">
+        @php
+        echo $totalstudent .' Students Have To Wait <span class="badge">'.sprintf($timeformat, $hours, $minutes); @endphp </span> cause their class end {{date('h:i a', strtotime($timevalue))}}</th>
+    
+    </tr>
+    </thead>
+    </table>
+                    
+        @endif 
+        @endforeach
+    
+    </div>
         </div>
     </div>
+
 </div>
-<!-- #END# Exportable Table -->
+
 
 
 
@@ -161,8 +250,15 @@
   <script src="{{asset('public/asset/plugins/jquery-datatable/extensions/export/vfs_fonts.js')}}"></script>
   <script src="{{asset('public/asset/plugins/jquery-datatable/extensions/export/buttons.html5.min.js')}}"></script>
   <script src="{{asset('public/asset/plugins/jquery-datatable/extensions/export/buttons.print.min.js')}}"></script>
+  <script src="{{asset('public/asset/plugins/jquery-countto/jquery.countTo.js')}}"></script>
   <script>
       $(function () {
+
+        $('.count-to').countTo();
+    $('.js-basic-example').DataTable({
+        responsive: true
+    });
+
     $('.js-basic-example').DataTable({
         responsive: true
     });
@@ -184,4 +280,5 @@
    
     <!-- JQuery DataTable Css -->
     <link href="{{asset('public/asset/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css')}}" rel="stylesheet">
+    <link href="{{asset('public/asset/plugins/animate-css/animate.css')}}" rel="stylesheet">
 @endpush

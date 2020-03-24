@@ -108,10 +108,13 @@ $dayArray = array('saturday','sunday', 'monday', 'tuesday', 'wednesday', 'friday
                   </div>
                 </div>
                   @endfor
-                    
+                    @if(count($info) > 5)
+                    <p style="color: red;font-weight: bold;text-align: center;">You Already Fulfilled All Slot Please Try Next Semester</p>
+                    @else
                    <div class="form-group">
                      <button type="submit" class="btn btn-info">Submit</button>
                    </div>
+                   @endif
                   </form>
                 </div>
             </div>
