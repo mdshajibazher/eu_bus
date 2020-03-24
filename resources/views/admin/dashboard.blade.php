@@ -26,7 +26,7 @@
                                 <i class="material-icons col-black">date_range</i>
                             </div>
                             <div class="content">
-                                <div class="text">Date</div>
+                                <div class="text">DATE</div>
                             <div class="number" >{{now()->toDateString()}}</div>
                             </div>
                         </div>
@@ -40,7 +40,7 @@
                                 <i class="material-icons col-cyan">eco</i>
                             </div>
                             <div class="content">
-                                <div class="text">Session</div>
+                                <div class="text">SESSION</div>
                             <div class="number">{{$current_session}}</div>
                             </div>
                         </div>
@@ -52,7 +52,7 @@
                                 <i class="material-icons col-light-green">date_range</i>
                             </div>
                             <div class="content">
-                                <div class="text">Day</div>
+                                <div class="text">DAY</div>
                             <div class="number">{{$day}}</div>
                             </div>
                         </div>
@@ -69,13 +69,13 @@
 
   
 
-        @foreach($info as $key =>  $inf)
+        
   
-        <div class="card" id="{{$key+1}}">
+        <div class="card">
             <div class="header">
 
                 <h2>
-                    DETAILED INFORMATION FROM  {{ date('h:i a', strtotime($from[$key])) }} To {{date('h:i a', strtotime($to[$key]))}}
+                    Total {{count($info)}} Time Combination Found
                 </h2>
 
                     
@@ -83,100 +83,87 @@
             </div>
             <div class="body">
                 <div class="row">
-                <div class="col-lg-7 col-md-6 col-sm-6 col-xs-12">
-                    <div class="info-box hover-expand-effect">
-                            <div class="icon bg-{{$colors[$key]}}">
-                                <i class="material-icons">
-                                    access_alarm
-                                    </i>
-                            </div>
-                            <div class="content">
-                                <div class="text">Time Range</div>
-                                <div class="number">{{ date('h:i a', strtotime($from[$key])) }} To {{date('h:i a', strtotime($to[$key]))}}</div>
-                            </div>
-                        </div>
-                </div>
- 
-                <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
-                        <div class="info-box-4 hover-expand-effect">
-                            <div class="icon">
-                                <i class="material-icons col-{{$colors[$key]}}">
-                                    directions_bus
-                                    </i>
-                            </div>
-                            @php $busNeeded = ceil(count($inf)/40);  @endphp
-                            <div class="content">
-                                <div class="text">BUS NEDED</div>
-                            <div class="number count-to" data-from="0" data-to="{{$busNeeded}}" data-speed="1000">{{$busNeeded}}</div>
-                            </div>
-                        </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                    <div class="info-box-4 hover-expand-effect">
-                            <div class="icon">
-                                <i class="material-icons col-{{$colors[$key]}}">face</i>
-                            </div>
-                            <div class="content">
-                                <div class="text">STUDENTS RANGE</div>
-                            <div class="number count-to" data-from="0" data-to="{{count($inf)}}" data-speed="2500" data-fresh-interval="20">{{count($inf)}}</div>
-                            </div>
-                        </div>
-                </div>
 
-                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                    <div class="info-box-4 hover-expand-effect">
-                            <div class="icon">
-                                <i class="material-icons col-{{$colors[$key]}}">airline_seat_recline_extra</i>
-                            </div>
-                            <div class="content">
-                                <div class="text">REQUIRED SEAT</div>
-                            <div class="number count-to" data-from="0" data-to="{{count($inf)}}" data-speed="1000" data-fresh-interval="20">{{count($inf)}}</div>
-                            </div>
-                        </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                    <div class="info-box-4  hover-expand-effect">
-                        <div class="icon">
-                            <i class="material-icons @if(count($inf) >= 40*$busNeeded) col-green @else col-red @endif">highlight_off</i>
-                        </div>
-                        <div class="content">
-                            <div class="text">Wasted Seat</div>
-                            <div class="number count-to" data-from="0" data-to="@if(count($inf) >= 40*$busNeeded) 0 @else {{(40*$busNeeded)-count($inf)}}  @endif" data-speed="2500">@if(count($inf) >= 40*$busNeeded) 0 @else {{(40*$busNeeded)-count($inf)}}  @endif </div>
-                        </div>
+                    <div class="table-responsive text-center" style="font-weight: bold;">
+                        <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                            <thead class="bg-grey">
+                                <tr>
+                                    <th>id</th>
+                                    <th>Time Range</th>
+                                    <th>Total Students</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th>id</th>
+                                    <th>Time Range</th>
+                                    <th>Total Students</th>
+                                    <th>Action</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                @php
+                                    $i=1; 
+                                    $totalstudent =0;   
+                                @endphp
+                                @foreach($info as $key =>  $inf)
+                                @php
+                                    $totalstudent += count($inf);
+                                @endphp
+
+                                <tr>
+                                    <td>{{$i++}}</td>
+                                    <td>{{ date('h:i A', strtotime($from[$key])) }}  থেকে {{date('h:i A', strtotime($to[$key]))}} ঘটিকা পর্যন্ত</td>
+                                    <td>{{count($inf)}} জন</td>
+                                <td>
+                                <form action="{{route('information.retrive')}}" method="POST">
+                                @csrf
+                                <input type="hidden" name="from" value="{{$from[$key]}}">
+                                <input type="hidden" name="to" value="{{$to[$key]}}">
+                                <input type="hidden" name="day" value="{{$day}}">
+                                <input type="hidden" name="current_session" value="{{$current_session}}">
+                                <button type="submit" class="btn bg-cyan btn-sm"><i class="material-icons">visibility</i></button>
+                                </form>
+                                        
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+    
                     </div>
-                </div>
+           
       
                 </div>
              
+
+            
+
             </div>
         </div>
 
-        @endforeach
+       
 
 
 
         
     </div>
-
-    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-        <div class="card text-center">
-            <div class="header">
-                <h2>Total {{count($time_array)}} Time Combination Found </h2> <br>
-                
-                <table class="table table-bordered table-striped table-hover text-center">
-                     @foreach($time_array as $key =>  $timeSchedule)
-                    
-                    <tr>
-                    <td>{{$key+1}}</td>
-                        <td>
-                         <a href="#{{$key+1}}">{{date('h:i A', strtotime($timeSchedule[0]))}} To {{date('h:i A', strtotime($timeSchedule[1]))}}</a> 
-                       </td>
-                    </tr>
-                    @endforeach
-                </table>
+    <div class="row">
+        <div class="col-md-3 col-lg-3">
+            <div class="info-box-4 hover-expand-effect">
+                <div class="icon">
+                    <i class="material-icons col-yellow">face</i>
+                </div>
+                <div class="content">
+                    <div class="text">TOTAL STUDENT</div>
+                <div class="number">{{$totalstudent}}</div>
+                </div>
             </div>
+           
         </div>
     </div>
+
+
 
 </div>
 <!-- #END# Exportable Table -->
@@ -202,14 +189,11 @@
   <script>
       $(function () {
         $('.count-to').countTo();
-    $('.js-basic-example').DataTable({
-        responsive: true
-    });
-
     //Exportable table
     $('.js-exportable').DataTable({
         dom: 'Bfrtip',
         responsive: true,
+        paging: false,
         buttons: [
             'copy', 'csv', 'excel', 'pdf', 'print'
         ]

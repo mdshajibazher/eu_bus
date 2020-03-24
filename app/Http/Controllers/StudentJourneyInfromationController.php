@@ -34,7 +34,7 @@ class StudentJourneyInfromationController extends Controller
     {
         $timeslot = TimeSlot::all();
         $current_session = Currentsession::all()->where('status',1)->first();
-        $info =   DB::table('information')->select('day')->where('student',Auth::user()->id)->get();
+        $info =   DB::table('information')->select('day')->where('student',Auth::user()->id)->where('current_session',$current_session->session_slug)->get();
         return view('students.information.create',compact('info','timeslot','current_session'));
     }
 

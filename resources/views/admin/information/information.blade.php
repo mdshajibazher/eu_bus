@@ -8,8 +8,10 @@
             
             <div class="header">
                 <h2 style="margin-bottom: 20px">
-                    INFORMATION AT A GLANCE
+                    INFORMATION AT A GLANCE 
                 </h2>
+            @php $amount = 50 @endphp
+            <h2>আমরা যদি {{ date('h:i a', strtotime($from)) }} থেকে  {{date('h:i a', strtotime($to))}} এই সময় সিমার মধ্যে এবং {{count($inf)}} জন ছাত্রের জন্য বাস প্রদান করি তবে যেটা হতে পারে তার চিত্র  নিম্নরূপ ।  এখানে {{ $amount}} টাকা  একটি স্ট্যাটিক সংখ্যা যা একটা সিটের মুল্যমান  নির্ধারণ করে ।  @if(empty($between))  <br> <br><span style="color: red">***এখানে {{ date('h:i a', strtotime($from)) }} থেকে  {{date('h:i a', strtotime($to))}} এই দুই সময়ের মধ্যবর্তি সময়ে যদি কারো ক্লাস থেকে থাকে সেগুলো নেই আপনি চাইলে এই <a href="{{route('information.request')}}">লিঙ্ক</a> এ ক্লিক করে বিটুইন এ চেকমার্ক করে এগুলো একসাথে দেখতে পারেন   </span> @endif </h2><br>
                 <div class="row">
                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                         <div class="info-box hover-expand-effect">
@@ -57,8 +59,9 @@
                                 <i class="material-icons col-orange">face</i>
                             </div>
                             <div class="content">
+                                @php $toatl_students = count($inf); @endphp
                                 <div class="text">TOTAL STUDENTS</div>
-                            <div class="number count-to" data-from="0" data-to="{{count($inf)}}" data-speed="2000" data-fresh-interval="20">{{count($inf)}}</div>
+                            <div class="number count-to" data-from="0" data-to="{{$toatl_students}}" data-speed="2000" data-fresh-interval="20">{{$toatl_students}}</div>
                             </div>
                         </div>
                     </div>
@@ -94,7 +97,23 @@
                             </div>
                             <div class="content">
                                 <div class="text">Wasted Seat (40/Seat)</div>
-                                <div class="number count-to" data-from="0" data-to="{{(40*ceil(count($inf)/40))-(count($inf))}}" data-speed="2500">{{(40*ceil(count($inf)/40))-(count($inf))}}</div>
+                                @php
+                                    $wasted_seat = (40*ceil(count($inf)/40))-(count($inf));
+                                @endphp
+                                <div class="number count-to" data-from="0" data-to="{{$wasted_seat}}" data-speed="2500">{{(40*ceil(count($inf)/40))-(count($inf))}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-md-5">
+                        <div class="info-box-4  hover-expand-effect">
+                            <div class="icon">
+                                <i class="material-icons col-pink">
+                                    attach_money
+                                </i>
+                            </div>
+                            <div class="content">
+                                <div class="text">Net Loss</div>
+                            <div class="number">{{$wasted_seat}} x {{$amount}} = {{$wasted_seat*$amount}} Tk</div>
                             </div>
                         </div>
                     </div>
@@ -219,7 +238,7 @@
     <th scope="col">{{$number++}}</th>
     <th scope="col">
         @php
-        echo $totalstudent .' Students Have To Wait <span class="badge">'.sprintf($timeformat, $hours, $minutes); @endphp </span> cause their class end {{date('h:i a', strtotime($timevalue))}}</th>
+        echo $totalstudent .' জন ছাত্র/ছাত্রিকে  <span class="badge">'.sprintf($timeformat, $hours, $minutes); @endphp </span> বেশি অপেক্ষা করতে হবে কারন  তাদের ক্লাস শেষ বেলা {{date('h:i a', strtotime($timevalue))}} ঘটিকায় </th>
     
     </tr>
     </thead>

@@ -16,12 +16,21 @@ class InformationController extends Controller
         return view('admin.information.index', compact('timeslot','current_session'));
     }
     public function retriveInformation(InformationValidationRequest $request){
-        
+    
         $from = $request['from'];
         $to = $request['to'];
         $day = $request['day'];
         $current_session = $request['current_session'];
-        $inf = DB::table('information')->join('users', 'information.student', '=', 'users.id')->select('information.*','users.name', 'users.address', 'users.area')->whereBetween('class_start', [$from, $to])->whereBetween('class_end', [$from, $to])->where('day', $day)->where('current_session',$current_session)->get();
-        return view('admin.information.information', compact('inf', 'from', 'to', 'day', 'current_session'));
+
+        if($request->has('between')){
+            $between = $request['between'];
+            $inf = DB::table('information')->join('users', 'information.student', '=', 'users.id')->select('information.*','users.name', 'users.address', 'users.area')->whereBetween('class_start', [$from, $to])->whereBetween('class_end', [$from, $to])->where('day', $day)->where('current_session',$current_session)->get();
+            return view('admin.information.information', compact('inf', 'from', 'to', 'day', 'current_session','between'));
+        }else{
+            $inf = DB::table('information')->join('users', 'information.student', '=', 'users.id')->select('information.*','users.name', 'users.address', 'users.area')->where('class_start',$from)->where('class_end',$to)->where('day', $day)->where('current_session',$current_session)->get();
+            return view('admin.information.information', compact('inf', 'from', 'to', 'day', 'current_session'));
+        }
+        
+        
     }
 }

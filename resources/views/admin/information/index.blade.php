@@ -3,12 +3,12 @@
 @section('content')
 
 <!-- Multi Select -->
-<form action="" method="POST">
+<form action="{{route('information.retrive')}}" method="POST">
 @csrf
 
 <!-- Select -->
 <div class="row clearfix">
-    <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-lg-offset-4 col-md-offset-4">
         <div class="card">
             <div class="header">
                 <h2>
@@ -26,8 +26,10 @@
 @endif
             </div>
             <div class="body">
-                <div class="row clearfix">
-                    <div class="col-sm-6">
+              
+                        <div class="form-group">
+
+                        
                         <label for="">From</label>
                         <select class="form-control" name="from">
                             @if(count($timeslot)>0)
@@ -38,7 +40,7 @@
                             
                         </select>
                     </div>
-                    <div class="col-sm-6">
+                        <div class="form-group">
                         <label for="">To</label>
                         <select class="form-control" name="to">
                             @if(count($timeslot)>0)
@@ -49,8 +51,9 @@
                             
                         </select>
                     </div>
-
-                    <div class="col-sm-6">
+                 
+                        <div class="form-group">
+                  
                         <label for="">Select Day</label>
                         <select class="form-control show-tick" name="day">
                             <option value="">-- Please select --</option>
@@ -63,19 +66,29 @@
                         </select>
                     </div>
 
-                    <div class="col-sm-6">
-                        <label for="">Session</label>
-                        <select class="form-control" name="current_session">
+                        <div class="form-group">
+                        <label for="current_session">Session</label>
+                        <select id="current_session" class="form-control" name="current_session">
                             
                         <option value="{{$current_session->session_slug}}">{{$current_session->session_name.' '.$current_session->year}}</option>
                         
                         </select>
+                        </div>
+                        
+                    <div class="form-group">
+                        <input type="checkbox" id="between" class="filled-in chk-col-pink" value="1" name="between" />
+                        <label for="between">Between</label>
+
+                        <p>নোটঃ আপনি যদি এই বিটউইন বাটনে চেক করেন তবে সিলেক্টেড সময়সীমার ভেতরে যদি আরো কোন সময়সীমা থেকে থাকে  সবগুলো একসাথে আপনাকে কুয়েরি করে দেখাবে । এরকম না চাইলে যাস্ট ফিল্ড আনচেক রেখে দিন </p>
                     </div>
-                    <div class="col-sm-6">
+                   
+
+               
+                   
                         <button type="submit" class="btn bg-green">Submit</button>
-                    </div>
+                 
                     
-                </div>
+           
             </div>
         </div>
     </div>
